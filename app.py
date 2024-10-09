@@ -233,7 +233,7 @@ def adicionar_relatorio(cpf):
 
     return render_template("adicionar_relatorio.html", paciente=paciente)
 
-# Rota para visualizar relatório por data
+# Rota para visualizar relatório por data 20
 @app.route("/relatorio_por_data", methods=["GET"])
 def relatorio_por_data():
     return render_template("relatorio_por_data.html")
