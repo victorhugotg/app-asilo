@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Informações Adicionais</title>
+</head>
+<body>
+    <h2>Cadastrar Informações Adicionais para {{ paciente['nome'] }}</h2>
+    <form action="/cadastrar_info_adicional/{{ paciente['cpf'] }}" method="POST">
+        <h3>Informações Físicas</h3>
+        <label for="doencas_cronicas">Doenças Crônicas:</label>
+        <input type="text" id="doencas_cronicas" name="doencas_cronicas"><br>
+        <label for="alergias">Alergias:</label>
+        <input type="text" id="alergias" name="alergias"><br>
+        <label for="medicamentos">Medicamentos em Uso:</label>
+        <input type="text" id="medicamentos" name="medicamentos"><br>
+        <label for="cirurgias">Cirurgias Anteriores:</label>
+        <input type="text" id="cirurgias" name="cirurgias"><br>
+        <label for="historico_internacoes">Histórico de Internações:</label>
+        <input type="text" id="historico_internacoes" name="historico_internacoes"><br>
+        <label for="vacinas">Vacinas Tomadas:</label>
+        <input type="text" id="vacinas" name="vacinas"><br>
+        <label for="exames">Exames Recentes:</label>
+        <input type="text" id="exames" name="exames"><br>
+        
+        <h3>Informações Mentais</h3>
+        <label for="condicoes_cognitivas">Condições Cognitivas:</label>
+        <input type="text" id="condicoes_cognitivas" name="condicoes_cognitivas"><br>
+        <label for="alteracoes_humor">Alterações de Humor:</label>
+        <input type="text" id="alteracoes_humor" name="alteracoes_humor"><br>
+        <label for="comportamento_social">Comportamento Social:</label>
+        <input type="text" id="comportamento_social" name="comportamento_social"><br>
+        
+        <button type="submit">Salvar Informações Adicionais</button>
+    </form>
+    <a href="/home">Voltar para o início</a>
+</body>
+</html>

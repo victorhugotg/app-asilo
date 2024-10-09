@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de {{ paciente['nome'] }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .relatorio {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .titulo {
+            font-weight: bold;
+            color: #333;
+        }
+        .subtitulo {
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>Relatórios de {{ paciente['nome'] }}</h2>
+
+    <form method="POST">
+        <button name="adicionar_relatorio">Adicionar Relatório</button>
+        <h3>Buscar Relatório por Data:</h3>
+        <input type="date" name="data">
+        <button name="buscar_relatorio">Buscar</button>
+    </form>
+
+    <h3>Últimos Relatórios:</h3>
+    <div>
+        {% for relatorio in paciente['relatorios'] %}
+            <div class="relatorio">
+                <div class="titulo">Data: {{ relatorio['data'] }} às {{ relatorio['hora'] }}</div>
+                <div><span class="subtitulo">Responsável:</span> {{ relatorio['responsavel'] }}</div>
+                <div><span class="subtitulo">Cadastrado por:</span> {{ relatorio['cadastrado_por'] }}</div>
+                
+                <h4>Sinais Vitais:</h4>
+                <div><span class="subtitulo">Pressão:</span> {{ relatorio['sinais_vitais']['pressao'] }}</div>
+                <div><span class="subtitulo">Frequência Cardíaca:</span> {{ relatorio['sinais_vitais']['frequencia_cardiaca'] }}</div>
+                <div><span class="subtitulo">Temperatura:</span> {{ relatorio['sinais_vitais']['temperatura'] }}</div>
+
+                <h4>Estado Geral:</h4>
+                <div><span class="subtitulo">Consciência:</span> {{ relatorio['estado_geral']['consciencia'] }}</div>
+                <div><span class="subtitulo">Dor:</span> {{ relatorio['estado_geral']['dor'] }}</div>
+                <div><span class="subtitulo">Horário que foi dormir:</span> {{ relatorio['estado_geral']['horario_dormir'] }}</div>
+                <div><span class="subtitulo">Horário que despertou:</span> {{ relatorio['estado_geral']['horario_despertar'] }}</div>
+                <div><span class="subtitulo">Nº de vezes que despertou:</span> {{ relatorio['estado_geral']['n_vzes_despertou'] }}</div>
+                <div><span class="subtitulo">Tempo que dormiu durante o dia (minutos):</span> {{ relatorio['estado_geral']['tempo_dia'] }}</div>
+                <div><span class="subtitulo">Agitação motora durante o sono:</span> {{ relatorio['estado_geral']['agitation'] }}</div>
+                <div><span class="subtitulo">Queixa de falta de ar:</span> {{ relatorio['estado_geral']['falta_ar'] }}</div>
+                <div><span class="subtitulo">Apresenta roncos:</span> {{ relatorio['estado_geral']['roncos'] }}</div>
+
+                <h4>Alimentação e Hidratação:</h4>
+                <h5>Refeições:</h5>
+                <div><span class="subtitulo">Café da Manhã:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['nome'] }} 
+                    <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['observacoes'] }}</div>
+                <div><span class="subtitulo">Almoço:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['nome'] }} 
+                    <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['observacoes'] }}</div>
+                <div><span class="subtitulo">Café da Tarde:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_tarde']['nome'] }} 
+                    <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_tarde']['observacoes'] }}</div>
+                <div><span class="subtitulo">Jantar:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['nome'] }} 
+                    <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['observacoes'] }}</div>
+
+                <div><span class="subtitulo">Hidratação:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao'] }}</div>
+
+                <h4>Mobilidade e Higiene:</h4>
+                <div><span class="subtitulo">Mobilidade:</span> {{ relatorio['mobilidade_higiene']['mobilidade'] }}</div>
+                <div><span class="subtitulo">Higiene:</span> {{ relatorio['mobilidade_higiene']['higiene'] }}</div>
+
+                <h4>Medicamentos:</h4>
+                <div>{{ relatorio['medicamentos'] }}</div>
+
+                <h4>Observações:</h4>
+                <div>{{ relatorio['observacoes'] }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="/home">Voltar ao início</a>
+</body>
+</html>

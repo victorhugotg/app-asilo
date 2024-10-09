@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Relatório</title>
+</head>
+<body>
+    <h2>Adicionar Relatório para {{ paciente.nome }}</h2>
+    <form action="" method="POST">
+        <!-- Data e Responsável -->
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required><br><br>
+
+        <label for="responsavel">Responsável (Nome e Função):</label>
+        <input type="text" id="responsavel" name="responsavel" required><br><br>
+
+        <!-- Sinais Vitais -->
+        <h3>1. Sinais Vitais:</h3>
+        <label for="pressao">Pressão Arterial:</label>
+        <input type="text" id="pressao" name="pressao" required><br><br>
+
+        <label for="frequencia_cardiaca">Frequência Cardíaca:</label>
+        <input type="text" id="frequencia_cardiaca" name="frequencia_cardiaca" required><br><br>
+
+        <label for="temperatura">Temperatura:</label>
+        <input type="text" id="temperatura" name="temperatura" required><br><br>
+
+        <!-- Estado Geral -->
+        <h3>2. Estado Geral:</h3>
+        <label for="consciencia">Consciência:</label>
+        <input type="text" id="consciencia" name="consciencia" required><br><br>
+
+        <label for="dor">Dor (intensidade de 0 a 10):</label>
+        <input type="text" id="dor" name="dor" required><br><br>
+
+        <label for="horario_dormir">Horário que foi dormir:</label>
+        <input type="time" id="horario_dormir" name="horario_dormir" required><br><br>
+
+        <label for="horario_despertar">Horário que despertou:</label>
+        <input type="time" id="horario_despertar" name="horario_despertar" required><br><br>
+
+        <label for="n_vzes_despertou">Nº de vezes que despertou durante a noite:</label>
+        <input type="number" id="n_vzes_despertou" name="n_vzes_despertou" required><br><br>
+
+        <label for="tempo_dia">Tempo que dormiu durante o dia (minutos):</label>
+        <input type="number" id="tempo_dia" name="tempo_dia"><br><br>
+
+        <label for="agitation">Agitação motora durante o sono:</label>
+        <input type="text" id="agitation" name="agitation"><br><br>
+
+        <label for="falta_ar">Queixa de falta de ar:</label>
+        <select id="falta_ar" name="falta_ar">
+            <option value="não">Não</option>
+            <option value="sim">Sim</option>
+        </select><br><br>
+
+        <label for="roncos">Apresenta roncos:</label>
+        <select id="roncos" name="roncos">
+            <option value="não">Não</option>
+            <option value="sim">Sim</option>
+        </select><br><br>
+
+        <!-- Registro de Alimentação -->
+        <h3>3. Registro de Alimentação</h3>
+        <div class="meal-option">
+            <label for="cafe_da_manha">Café da Manhã:</label>
+            <select id="cafe_da_manha" name="cafe_da_manha">
+                <option value="não">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+            <input type="text" name="cafe_da_manha_obs" placeholder="Observações..."><br><br>
+        </div>
+
+        <div class="meal-option">
+            <label for="almoco">Almoço:</label>
+            <select id="almoco" name="almoco">
+                <option value="não">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+            <input type="text" name="almoco_obs" placeholder="Observações..."><br><br>
+        </div>
+
+        <div class="meal-option">
+            <label for="cafe_da_tarde">Café da Tarde:</label>
+            <select id="cafe_da_tarde" name="cafe_da_tarde">
+                <option value="não">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+            <input type="text" name="cafe_da_tarde_obs" placeholder="Observações..."><br><br>
+        </div>
+
+        <div class="meal-option">
+            <label for="jantar">Jantar:</label>
+            <select id="jantar" name="jantar">
+                <option value="não">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+            <input type="text" name="jantar_obs" placeholder="Observações..."><br><br>
+        </div>
+
+        <!-- Mobilidade e Higiene -->
+        <h3>4. Mobilidade e Higiene:</h3>
+        <label for="mobilidade">Mobilidade:</label>
+        <input type="text" id="mobilidade" name="mobilidade" required><br><br>
+
+        <label for="higiene">Higiene (fraldas trocadas, etc.):</label>
+        <input type="text" id="higiene" name="higiene" required><br><br>
+
+        <!-- Medicamentos -->
+        <h3>5. Medicamentos:</h3>
+        <textarea id="medicamentos" name="medicamentos" rows="4" required></textarea><br><br>
+
+        <!-- Observações Gerais -->
+        <h3>6. Observações:</h3>
+        <textarea id="observacoes" name="observacoes" rows="4"></textarea><br><br>
+
+        <input type="submit" value="Salvar Relatório">
+    </form>
+
+    <a href="{{ url_for('ver_relatorios', cpf=paciente.cpf) }}">Voltar para Relatórios</a>
+</body>
+</html>

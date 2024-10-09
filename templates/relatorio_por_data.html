@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório por Data</title>
+    <style>
+        .relatorio {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .campo {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Relatórios de {{ paciente.nome }} - Data Selecionada</h2>
+    <div>
+        {% if relatorios %}
+            {% for relatorio in relatorios %}
+                <div class="relatorio">
+                    <p><span class="campo">Data:</span> {{ relatorio.data }}</p>
+                    <p><span class="campo">Hora:</span> {{ relatorio.hora }}</p>
+                    <p><span class="campo">Responsável:</span> {{ relatorio.responsavel }}</p>
+                    <p><span class="campo">Usuário:</span> {{ relatorio.usuario }}</p>
+                    <p><span class="campo">Sinais Vitais:</span> Pressão: {{ relatorio.sinais_vitais.pressao }}, Frequência Cardíaca: {{ relatorio.sinais_vitais.frequencia_cardiaca }}, Temperatura: {{ relatorio.sinais_vitais.temperatura }}</p>
+                    <p><span class="campo">Estado Geral:</span> Consciência: {{ relatorio.estado_geral.consciencia }}, Dor: {{ relatorio.estado_geral.dor }}</p>
+                    <p><span class="campo">Alimentação e Hidratação:</span> Refeições: {{ relatorio.alimentacao_hidratacao.refeicoes }}, Hidratação: {{ relatorio.alimentacao_hidratacao.hidratacao }}</p>
+                    <p><span class="campo">Mobilidade e Higiene:</span> Mobilidade: {{ relatorio.mobilidade_higiene.mobilidade }}, Higiene: {{ relatorio.mobilidade_higiene.higiene }}</p>
+                    <p><span class="campo">Medicamentos:</span> {{ relatorio.medicamentos }}</p>
+                    <p><span class="campo">Observações:</span> {{ relatorio.observacoes }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum relatório encontrado para esta data.</p>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('ver_relatorios', cpf=paciente.cpf) }}">Voltar para Relatórios</a>
+</body>
+</html>
