@@ -141,11 +141,13 @@ def adicionar_relatorio(cpf):
     if request.method == "POST":
         try:
             # Captura os dados do formulário
-            data = request.form.get("data")
+            data = request.form.get("data", datetime.now().strftime("%Y-%m-%d"))  # Data padrão é a atual
             responsavel = request.form.get("responsavel")
             pressao = request.form.get("pressao")
             frequencia_cardiaca = request.form.get("frequencia_cardiaca")
             temperatura = request.form.get("temperatura")
+            saturacao_oxigeno = request.form.get("saturacao_oxigeno")  # Captura o campo corretamente
+            frequencia_respiratoria = request.form.get("frequencia_respiratoria")  # Captura o campo corretamente
             consciencia = request.form.get("consciencia")
             dor = request.form.get("dor")
             mobilidade = request.form.get("mobilidade")
@@ -153,13 +155,12 @@ def adicionar_relatorio(cpf):
             medicamentos = request.form.get("medicamentos")
             observacoes = request.form.get("observacoes")
 
-            # Novos campos para estado geral
+            # Informações de sono
             horario_dormir = request.form.get("horario_dormir")
             horario_despertar = request.form.get("horario_despertar")
-            n_vzes_despertou = request.form.get("n_vzes_despertou")
-            tempo_dia = request.form.get("tempo_dia")
-            agitação = request.form.get("agitação")
-            falta_ar = request.form.get("falta_ar")
+            num_despertares = request.form.get("num_despertares")
+            tempo_dormido_dia = request.form.get("tempo_dormido_dia")
+            falta_de_ar = request.form.get("falta_de_ar")
             roncos = request.form.get("roncos")
 
             # Alimentação e hidratação
@@ -167,10 +168,11 @@ def adicionar_relatorio(cpf):
             almoco = request.form.get("almoco")
             cafe_da_tarde = request.form.get("cafe_da_tarde")
             jantar = request.form.get("jantar")
-            hidratacao = request.form.get("hidratacao")
+            hidratacao = request.form.get("hidratacao")  # Novo campo
+            quantidade_agua = request.form.get("quantidade_agua")  # Novo campo para quantidade de água
 
             # Verificação se algum campo essencial está ausente
-            if not all([data, responsavel, pressao, frequencia_cardiaca, temperatura, consciencia, dor, mobilidade, higiene, medicamentos]):
+            if not all([responsavel, pressao, frequencia_cardiaca, temperatura, consciencia, dor, mobilidade, higiene, medicamentos]):
                 return "<h1>Erro: Todos os campos obrigatórios devem ser preenchidos.</h1>"
 
             # Criação do relatório
@@ -181,21 +183,24 @@ def adicionar_relatorio(cpf):
                 "sinais_vitais": {
                     "pressao": pressao,
                     "frequencia_cardiaca": frequencia_cardiaca,
-                    "temperatura": temperatura
+                    "temperatura": temperatura,
+                    "saturacao_oxigeno": saturacao_oxigeno,
+                    "frequencia_respiratoria": frequencia_respiratoria
                 },
                 "estado_geral": {
                     "consciencia": consciencia,
                     "dor": dor,
-                    "horario_dormir": horario_dormir,
-                    "horario_despertar": horario_despertar,
-                    "n_vzes_despertou": n_vzes_despertou,
-                    "tempo_dia": tempo_dia,
-                    "agitação": agitação,
-                    "falta_ar": falta_ar,
-                    "roncos": roncos
+                    "sono": {
+                        "horario_dormir": horario_dormir,
+                        "horario_despertar": horario_despertar,
+                        "num_despertares": num_despertares,
+                        "tempo_dormido_dia": tempo_dormido_dia,
+                        "falta_de_ar": falta_de_ar,
+                        "roncos": roncos
+                    }
                 },
                 "alimentacao_hidratacao": {
-                    "refeicoes": {
+                    "refeicoes": {  # Certifique-se de que a chave 'refeicoes' está definida
                         "cafe_da_manha": {
                             "nome": cafe_da_manha,
                             "observacoes": request.form.get("cafe_da_manha_obs", "")
@@ -213,7 +218,10 @@ def adicionar_relatorio(cpf):
                             "observacoes": request.form.get("jantar_obs", "")
                         }
                     },
-                    "hidratacao": hidratacao
+                    "hidratacao": {
+                        "quantidade_agua": quantidade_agua,
+                        "observacoes": request.form.get("hidratacao_obs", "")
+                    }
                 },
                 "mobilidade_higiene": {
                     "mobilidade": mobilidade,

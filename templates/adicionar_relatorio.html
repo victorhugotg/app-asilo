@@ -26,6 +26,12 @@
         <label for="temperatura">Temperatura:</label>
         <input type="text" id="temperatura" name="temperatura" required><br><br>
 
+        <label for="saturacao_oxigenio">Saturação de Oxigênio (%):</label>
+        <input type="text" id="saturacao_oxigenio" name="saturacao_oxigenio" required><br><br>
+
+        <label for="frequencia_respiratoria">Frequência Respiratória (rpm):</label>
+        <input type="text" id="frequencia_respiratoria" name="frequencia_respiratoria" required><br><br>
+
         <!-- Estado Geral -->
         <h3>2. Estado Geral:</h3>
         <label for="consciencia">Consciência:</label>
@@ -34,32 +40,24 @@
         <label for="dor">Dor (intensidade de 0 a 10):</label>
         <input type="text" id="dor" name="dor" required><br><br>
 
+        <!-- Novos Campos de Estado Geral -->
         <label for="horario_dormir">Horário que foi dormir:</label>
-        <input type="time" id="horario_dormir" name="horario_dormir" required><br><br>
+        <input type="time" id="horario_dormir" name="horario_dormir"><br><br>
 
         <label for="horario_despertar">Horário que despertou:</label>
-        <input type="time" id="horario_despertar" name="horario_despertar" required><br><br>
+        <input type="time" id="horario_despertar" name="horario_despertar"><br><br>
 
-        <label for="n_vzes_despertou">Nº de vezes que despertou durante a noite:</label>
-        <input type="number" id="n_vzes_despertou" name="n_vzes_despertou" required><br><br>
+        <label for="n_vezes_despertou">Número de vezes que despertou durante a noite:</label>
+        <input type="number" id="n_vezes_despertou" name="n_vezes_despertou" min="0"><br><br>
 
-        <label for="tempo_dia">Tempo que dormiu durante o dia (minutos):</label>
-        <input type="number" id="tempo_dia" name="tempo_dia"><br><br>
+        <label for="tempo_dia">Tempo que dormiu durante o dia:</label>
+        <input type="text" id="tempo_dia" name="tempo_dia" placeholder="Ex: 2 horas e 30 minutos"><br><br>
 
-        <label for="agitation">Agitação motora durante o sono:</label>
-        <input type="text" id="agitation" name="agitation"><br><br>
-
-        <label for="falta_ar">Queixa de falta de ar:</label>
-        <select id="falta_ar" name="falta_ar">
-            <option value="não">Não</option>
-            <option value="sim">Sim</option>
-        </select><br><br>
+        <label for="queixa_falta_ar">Queixa de falta de ar:</label>
+        <input type="text" id="queixa_falta_ar" name="queixa_falta_ar" placeholder="Sim ou Não"><br><br>
 
         <label for="roncos">Apresenta roncos:</label>
-        <select id="roncos" name="roncos">
-            <option value="não">Não</option>
-            <option value="sim">Sim</option>
-        </select><br><br>
+        <input type="text" id="roncos" name="roncos" placeholder="Sim ou Não"><br><br>
 
         <!-- Registro de Alimentação -->
         <h3>3. Registro de Alimentação</h3>
@@ -97,6 +95,13 @@
                 <option value="sim">Sim</option>
             </select>
             <input type="text" name="jantar_obs" placeholder="Observações..."><br><br>
+        </div>
+
+        <!-- Quantidade de Água Ingerida -->
+        <div class="meal-option">
+            <label for="quantidade_agua">Quantidade de Água Ingerida (em litros):</label>
+            <input type="number" step="0.01" id="quantidade_agua" name="quantidade_agua" required><br><br>
+            <small>Exemplo: 0.5 para 500 ml</small><br><br>
         </div>
 
         <!-- Mobilidade e Higiene -->
