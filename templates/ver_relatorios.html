@@ -94,8 +94,8 @@
                     {% endif %}
 
                     <h5>Hidratação:</h5>
-                    <div><span class="subtitulo">Quantidade de Água Ingerida:</span> {{ relatorio['alimentacao_hidratacao']['quantidade_agua'] }} litros</div>
-                    <div><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao'] }}</div>
+                        <div><span class="subtitulo">Quantidade de Água Ingerida:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['quantidade_agua'] }} litros</div>
+                       <!--<div><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['observacoes'] }}</div> --> 
 
                     <h4>Medicamentos:</h4>
                     <div>{{ relatorio['medicamentos'] }}</div>
