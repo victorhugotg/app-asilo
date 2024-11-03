@@ -24,6 +24,19 @@
             font-weight: bold;
             color: #666;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -61,14 +74,14 @@
                     {% if relatorio['estado_geral'].get('horario_despertar') %}
                         <div><span class="subtitulo">Horário que despertou:</span> {{ relatorio['estado_geral']['horario_despertar'] }}</div>
                     {% endif %}
-                    {% if relatorio['estado_geral'].get('n_vezes_despertou') %}
-                        <div><span class="subtitulo">Número de vezes que despertou:</span> {{ relatorio['estado_geral']['n_vezes_despertou'] }}</div>
+                    {% if relatorio['estado_geral'].get('num_despertares') %}
+                        <div><span class="subtitulo">Número de vezes que despertou:</span> {{ relatorio['estado_geral']['num_despertares'] }}</div>
                     {% endif %}
-                    {% if relatorio['estado_geral'].get('tempo_dia') %}
-                        <div><span class="subtitulo">Tempo que dormiu durante o dia:</span> {{ relatorio['estado_geral']['tempo_dia'] }}</div>
+                    {% if relatorio['estado_geral'].get('tempo_dormido_dia') %}
+                        <div><span class="subtitulo">Tempo que dormiu durante o dia:</span> {{ relatorio['estado_geral']['tempo_dormido_dia'] }}</div>
                     {% endif %}
-                    {% if relatorio['estado_geral'].get('queixa_falta_ar') %}
-                        <div><span class="subtitulo">Queixa de falta de ar:</span> {{ relatorio['estado_geral']['queixa_falta_ar'] }}</div>
+                    {% if relatorio['estado_geral'].get('falta_de_ar') %}
+                        <div><span class="subtitulo">Queixa de falta de ar:</span> {{ relatorio['estado_geral']['falta_de_ar'] }}</div>
                     {% endif %}
                     {% if relatorio['estado_geral'].get('roncos') %}
                         <div><span class="subtitulo">Apresenta roncos:</span> {{ relatorio['estado_geral']['roncos'] }}</div>
@@ -79,29 +92,83 @@
                     <div><span class="subtitulo">Higiene:</span> {{ relatorio['mobilidade_higiene']['higiene'] }}</div>
 
                     <h4>Alimentação e Hidratação:</h4>
+                    <div><span class="subtitulo">Tipo de Alimentação:</span> {{ relatorio['alimentacao_hidratacao']['tipo_alimentacao'] }}</div>
+                    <div><span class="subtitulo">DM - Diabetes Mellitus:</span> {{ relatorio['alimentacao_hidratacao']['condicoes']['dm'] }}</div>
+                    <div><span class="subtitulo">Hipertensão:</span> {{ relatorio['alimentacao_hidratacao']['condicoes']['hipertensao'] }}</div>
+                    <div><span class="subtitulo">IRC - Insuficiência Renal Crônica:</span> {{ relatorio['alimentacao_hidratacao']['condicoes']['irc'] }}</div>
+                    
                     <h5>Refeições:</h5>
                     {% if relatorio['alimentacao_hidratacao'].get('refeicoes') %}
-                        <div><span class="subtitulo">Café da Manhã:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['nome'] }} 
-                            <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['observacoes'] }}</div>
-                        <div><span class="subtitulo">Almoço:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['nome'] }} 
-                            <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['observacoes'] }}</div>
-                        <div><span class="subtitulo">Café da Tarde:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_tarde']['nome'] }} 
-                            <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_tarde']['observacoes'] }}</div>
-                        <div><span class="subtitulo">Jantar:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['nome'] }} 
-                            <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['observacoes'] }}</div>
+                        <div><span class="subtitulo">Café da Manhã:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['nome'] }}
+                            {% if relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['observacoes'] %}
+                                <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['cafe_da_manha']['observacoes'] }}
+                            {% endif %}
+                        </div>
+                        <div><span class="subtitulo">Colação:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['colacao']['nome'] }}
+                            {% if relatorio['alimentacao_hidratacao']['refeicoes']['colacao']['observacoes'] %}
+                                <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['colacao']['observacoes'] }}
+                            {% endif %}
+                        </div>
+                        <div><span class="subtitulo">Almoço:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['nome'] }}
+                            {% if relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['observacoes'] %}
+                                <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['almoco']['observacoes'] }}
+                            {% endif %}
+                        </div>
+                        <div><span class="subtitulo">Lanche:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['lanche']['nome'] }}
+                            {% if relatorio['alimentacao_hidratacao']['refeicoes']['lanche']['observacoes'] %}
+                                <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['lanche']['observacoes'] }}
+                            {% endif %}
+                        </div>
+                        <div><span class="subtitulo">Jantar:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['nome'] }}
+                            {% if relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['observacoes'] %}
+                                <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['jantar']['observacoes'] }}
+                            {% endif %}
+                        </div>
+                        <div><span class="subtitulo">Ceia:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['ceia']['nome'] }}
+                            {% if relatorio['alimentacao_hidratacao']['refeicoes']['ceia']['observacoes'] %}
+                                <br><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['refeicoes']['ceia']['observacoes'] }}
+                            {% endif %}
+                        </div>
                     {% else %}
                         <p>Nenhuma refeição registrada.</p>
                     {% endif %}
 
                     <h5>Hidratação:</h5>
-                        <div><span class="subtitulo">Quantidade de Água Ingerida:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['quantidade_agua'] }} litros</div>
-                       <!--<div><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['observacoes'] }}</div> --> 
+                    <div><span class="subtitulo">Quantidade de Água Ingerida:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['quantidade_agua'] }} litros</div>
+                    {% if relatorio['alimentacao_hidratacao']['hidratacao']['observacoes'] %}
+                        <div><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['observacoes'] }}</div>
+                    {% endif %}
 
                     <h4>Medicamentos:</h4>
-                    <div>{{ relatorio['medicamentos'] }}</div>
-
-                    <h4>Observações:</h4>
-                    <div>{{ relatorio['observacoes'] }}</div>
+                    {% if relatorio.get('medicamentos') %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Aprazamento/Horas</th>
+                                    <th>Medicação</th>
+                                    <th>Dose</th>
+                                    <th>Via</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for medicamento in relatorio['medicamentos'] %}
+                                    <tr>
+                                        <td>{{ medicamento['aprazamento'] }}</td>
+                                        <td>{{ medicamento['medicacao'] }}</td>
+                                        <td>{{ medicamento['dose'] }}</td>
+                                        <td>{{ medicamento['via'] }}</td>
+                                        <td>
+                                            {{ medicamento['situacao'] }}
+                                            <span style="color: {% if medicamento['situacao'] == 'Administrado' %}green{% else %}red{% endif %};">&#9679;</span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Nenhum medicamento registrado.</p>
+                    {% endif %}
                 </div>
             {% endfor %}
         {% else %}

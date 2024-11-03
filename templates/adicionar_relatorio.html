@@ -27,7 +27,7 @@
         <input type="text" id="temperatura" name="temperatura" required><br><br>
 
         <label for="saturacao_oxigenio">Saturação de Oxigênio (%):</label>
-        <input type="text" name="saturacao_oxigeno" required><br><br>
+        <input type="text" id="saturacao_oxigenio" name="saturacao_oxigenio" required><br><br>
 
         <label for="frequencia_respiratoria">Frequência Respiratória (rpm):</label>
         <input type="text" id="frequencia_respiratoria" name="frequencia_respiratoria" required><br><br>
@@ -59,46 +59,96 @@
         <label for="roncos">Apresenta roncos:</label>
         <input type="text" id="roncos" name="roncos" placeholder="Sim ou Não"><br><br>
 
-        <!-- Registro de Alimentação -->
-        <h3>3. Registro de Alimentação</h3>
-        <div class="meal-option">
+        <!-- Registro de Refeições -->
+        <h3>3. Alimentação:</h3>
+        <div>
+            <label for="tipo_alimentacao">Tipo de Alimentação:</label>
+            <select id="tipo_alimentacao" name="tipo_alimentacao">
+                <option value="">Selecione...</option>
+                <option value="solida">Sólida</option>
+                <option value="pastosa">Pastosa</option>
+                <option value="semi-pastosa">Semi-pastosa</option>
+            </select><br><br>
+
+            <label for="dm">DM - Diabetes Mellitus:</label>
+            <select id="dm" name="dm">
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select><br><br>
+
+            <label for="hipertensao">Hipertensão:</label>
+            <select id="hipertensao" name="hipertensao">
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select><br><br>
+
+            <label for="irc">IRC - Insuficiência Renal Crônica:</label>
+            <select id="irc" name="irc">
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select><br><br>
+        </div>
+        <div>
             <label for="cafe_da_manha">Café da Manhã:</label>
             <select id="cafe_da_manha" name="cafe_da_manha">
-                <option value="não">Não</option>
-                <option value="sim">Sim</option>
-            </select>
-            <input type="text" name="cafe_da_manha_obs" placeholder="Observações..."><br><br>
-        </div>
+                <option value="">Selecione...</option>
+                <option value="1">Boa Aceitação</option>
+                <option value="2">Aceitação Parcial</option>
+                <option value="3">Recusa</option>
+                <option value="4">Náuseas / Engasgo / Vômito</option>
+            </select><br><br>
 
-        <div class="meal-option">
+            <label for="colacao">Colação:</label>
+            <select id="colacao" name="colacao">
+                <option value="">Selecione...</option>
+                <option value="1">Boa Aceitação</option>
+                <option value="2">Aceitação Parcial</option>
+                <option value="3">Recusa</option>
+                <option value="4">Náuseas / Engasgo / Vômito</option>
+            </select><br><br>
+
             <label for="almoco">Almoço:</label>
             <select id="almoco" name="almoco">
-                <option value="não">Não</option>
-                <option value="sim">Sim</option>
-            </select>
-            <input type="text" name="almoco_obs" placeholder="Observações..."><br><br>
-        </div>
+                <option value="">Selecione...</option>
+                <option value="1">Boa Aceitação</option>
+                <option value="2">Aceitação Parcial</option>
+                <option value="3">Recusa</option>
+                <option value="4">Náuseas / Engasgo / Vômito</option>
+            </select><br><br>
 
-        <div class="meal-option">
-            <label for="cafe_da_tarde">Café da Tarde:</label>
-            <select id="cafe_da_tarde" name="cafe_da_tarde">
-                <option value="não">Não</option>
-                <option value="sim">Sim</option>
-            </select>
-            <input type="text" name="cafe_da_tarde_obs" placeholder="Observações..."><br><br>
-        </div>
+            <label for="lanche">Lanche:</label>
+            <select id="lanche" name="lanche">
+                <option value="">Selecione...</option>
+                <option value="1">Boa Aceitação</option>
+                <option value="2">Aceitação Parcial</option>
+                <option value="3">Recusa</option>
+                <option value="4">Náuseas / Engasgo / Vômito</option>
+            </select><br><br>
 
-        <div class="meal-option">
             <label for="jantar">Jantar:</label>
             <select id="jantar" name="jantar">
-                <option value="não">Não</option>
-                <option value="sim">Sim</option>
-            </select>
-            <input type="text" name="jantar_obs" placeholder="Observações..."><br><br>
+                <option value="">Selecione...</option>
+                <option value="1">Boa Aceitação</option>
+                <option value="2">Aceitação Parcial</option>
+                <option value="3">Recusa</option>
+                <option value="4">Náuseas / Engasgo / Vômito</option>
+            </select><br><br>
+
+            <label for="ceia">Ceia:</label>
+            <select id="ceia" name="ceia">
+                <option value="">Selecione...</option>
+                <option value="1">Boa Aceitação</option>
+                <option value="2">Aceitação Parcial</option>
+                <option value="3">Recusa</option>
+                <option value="4">Náuseas / Engasgo / Vômito</option>
+            </select><br><br>
         </div>
 
         <!-- Quantidade de Água Ingerida -->
-        <div class="meal-option">
+        <div>
             <label for="quantidade_agua">Quantidade de Água Ingerida (em litros):</label>
             <input type="number" step="0.01" id="quantidade_agua" name="quantidade_agua" required><br><br>
             <small>Exemplo: 0.5 para 500 ml</small><br><br>
@@ -114,7 +164,106 @@
 
         <!-- Medicamentos -->
         <h3>5. Medicamentos:</h3>
-        <textarea id="medicamentos" name="medicamentos" rows="4" required></textarea><br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aprazamento/Horas</th>
+                    <th>Medicação</th>
+                    <th>Dose</th>
+                    <th>Via</th>
+                    <th>Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(10) %}
+                <tr>
+                    <td>
+                        <select name="aprazamento{{ i }}">
+                            <option value="">Selecione...</option>
+                            <option value="Em Jejum">Em Jejum</option>
+                            <option value="Antes do Almoço">Antes do Almoço</option>
+                            <option value="Durante o Almoço">Durante o Almoço</option>
+                            <option value="Antes do Jantar">Antes do Jantar</option>
+                            <option value="08:00">08:00</option>
+                            <option value="08:30">08:30</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="medicacao{{ i }}" placeholder="Medicação">
+                    </td>
+                    <td>
+                        <select name="dose{{ i }}">
+                            <option value="">Selecione...</option>
+                            <option value="AP/AMP">AP/AMP (ampola)</option>
+                            <option value="CAP">CAP (cápsula)</option>
+                            <option value="Col">Col (colírio)</option>
+                            <option value="CP/comp">CP/comp (comprimido)</option>
+                            <option value="CR">CR (creme)</option>
+                            <option value="DG">DG (drágeas)</option>
+                            <option value="ENV">ENV (envelope)</option>
+                            <option value="FL">FL (flaconete)</option>
+                            <option value="Gt/gts">Gt/gts (gotas)</option>
+                            <option value="mcg">mcg (micrograma)</option>
+                            <option value="mg">mg (miligrama)</option>
+                            <option value="mL">mL (mililitro)</option>
+                            <option value="NBZ">NBZ (nebulização)</option>
+                            <option value="SF">SF (solução fisiológica)</option>
+                            <option value="SG">SG (solução glicosada)</option>
+                            <option value="SNE">SNE (sonda nasoenteral)</option>
+                            <option value="SNG">SNG (sonda naso-gástrica)</option>
+                            <option value="SP/Sup">SP/Sup (supositório)</option>
+                            <option value="SY">SY (spray)</option>
+                            <option value="TB">TB (tubo)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="via{{ i }}">
+                            <option value="">Selecione...</option>
+                            <option value="Via Oral - VO">Via Oral - VO</option>
+                            <option value="Sublingual - SL">Sublingual - SL (sob a língua)</option>
+                            <option value="Via Bucal">Via Bucal (entre a gengiva e a bochecha)</option>
+                            <option value="Via Retal - VR">Via Retal - VR (no reto)</option>
+                            <option value="Via Vaginal - VV">Via Vaginal - VV (na vagina)</option>
+                            <option value="Intravenosa - IV">Intravenosa - IV (injetável na veia)</option>
+                            <option value="Via Intra Muscular - IM">Via Intra Muscular - IM (injetável no músculo)</option>
+                            <option value="Via Subcutânea - SC">Via Subcutânea - SC (injetável sob a pele)</option>
+                            <option value="Hipodermóclise">Hipodermóclise</option>
+                            <option value="Via Ocular">Via Ocular (no olho)</option>
+                            <option value="Via Otológica">Via Otológica (no ouvido)</option>
+                            <option value="Via Nasal">Via Nasal (no nariz)</option>
+                            <option value="Via Inalatória">Via Inalatória (pela boca)</option>
+                            <option value="Via por Nebulização - NBZ">Via por Nebulização - NBZ</option>
+                            <option value="Via Cutânea - Tópico">Via Cutânea - Tópico (efeito local, aplicado na pele)</option>
+                            <option value="Via Cutânea - Sistêmico">Via Cutânea - Sistêmico (aplicado na pele em todo o corpo)</option>
+                            <option value="Via Transdérmica - TD">Via Transdérmica - TD (aplicado na pele, através de adesivo)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="situacao{{ i }}" id="situacao{{ i }}" onchange="updateStatusDot({{ i }})">
+                            <option value="Por Administrar">Por Administrar</option>
+                            <option value="Administrado">Administrado</option>
+                        </select>
+                        <span id="status-dot{{ i }}" class="status-dot" style="color: red;">&#9679;</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br><br>
 
         <!-- Observações Gerais -->
         <h3>6. Observações:</h3>
@@ -124,5 +273,17 @@
     </form>
 
     <a href="{{ url_for('ver_relatorios', cpf=paciente.cpf) }}">Voltar para Relatórios</a>
+
+    <script>
+        function updateStatusDot(index) {
+            const selectElement = document.getElementById(`situacao${index}`);
+            const statusDot = document.getElementById(`status-dot${index}`);
+            if (selectElement.value === "Administrado") {
+                statusDot.style.color = "green";
+            } else {
+                statusDot.style.color = "red";
+            }
+        }
+    </script>
 </body>
 </html>
