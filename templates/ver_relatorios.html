@@ -44,6 +44,11 @@
 
     <form method="POST">
         <button name="adicionar_relatorio">Adicionar Relatório</button>
+        <br>
+        <h3>Ver Paciente</h3>
+        <a href="{{ url_for('ver_paciente', cpf=paciente['cpf']) }}" style="text-decoration: none;">
+            <button type="button">Ver Paciente</button>
+        </a>
         <h3>Buscar Relatório por Data:</h3>
         <input type="date" name="data">
         <button name="buscar_relatorio">Buscar</button>
@@ -134,7 +139,7 @@
                     {% endif %}
 
                     <h5>Hidratação:</h5>
-                    <div><span class="subtitulo">Quantidade de Água Ingerida:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['quantidade_agua'] }} litros</div>
+                    <div><span class="subtitulo">Quantidade de Água Ingerida:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['consumo_categoria'] }} litros</div>
                     {% if relatorio['alimentacao_hidratacao']['hidratacao']['observacoes'] %}
                         <div><span class="subtitulo">Observações:</span> {{ relatorio['alimentacao_hidratacao']['hidratacao']['observacoes'] }}</div>
                     {% endif %}

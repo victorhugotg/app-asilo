@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +11,17 @@
     <p>Idade: {{ paciente.idade }}</p>
     <p>Telefone: {{ paciente.telefone }}</p>
     <h3>Informações Adicionais:</h3>
-    <p>Doenças Crônicas: {{ paciente.infos_adicionais.get('doencas_cronicas', 'Não cadastradas') }}</p>
-    <p>Alergias: {{ paciente.infos_adicionais.get('alergias', 'Não cadastradas') }}</p>
-    <p>Medicamentos em Uso: {{ paciente.infos_adicionais.get('medicamentos', 'Não cadastradas') }}</p>
-    <p>Cirurgias Anteriores: {{ paciente.infos_adicionais.get('cirurgias', 'Não cadastradas') }}</p>
-    <p>Histórico de Internações: {{ paciente.infos_adicionais.get('internacoes', 'Não cadastradas') }}</p>
-    <p>Vacinas Tomadas: {{ paciente.infos_adicionais.get('vacinas', 'Não cadastradas') }}</p>
-    <p>Exames Recentes: {{ paciente.infos_adicionais.get('exames', 'Não cadastradas') }}</p>
-    <p>Condições Cognitivas: {{ paciente.infos_adicionais.get('condicoes_cognitivas', 'Não cadastradas') }}</p>
-    <p>Alterações de Humor: {{ paciente.infos_adicionais.get('alteracoes_humor', 'Não cadastradas') }}</p>
-    <p>Comportamento Social: {{ paciente.infos_adicionais.get('comportamento_social', 'Não cadastradas') }}</p>
-    <a href="{{ url_for('adicionar_infos_adicionais', cpf=paciente.cpf) }}">Adicionar/Atualizar Informações Adicionais</a><br>
+    <p>Doenças Crônicas: {{ paciente.doencas_cronicas or 'Não cadastradas' }}</p>
+    <p>Alergias: {{ paciente.alergias or 'Não cadastradas' }}</p>
+    <p>Medicamentos em Uso: {{ paciente.medicamentos or 'Não cadastradas' }}</p>
+    <p>Cirurgias Anteriores: {{ paciente.cirurgias or 'Não cadastradas' }}</p>
+    <p>Histórico de Internações: {{ paciente.historico_internacoes or 'Não cadastradas' }}</p>
+    <p>Vacinas Tomadas: {{ paciente.vacinas or 'Não cadastradas' }}</p>
+    <p>Exames Recentes: {{ paciente.exames or 'Não cadastradas' }}</p>
+    <p>Condições Cognitivas: {{ paciente.condicoes_cognitivas or 'Não cadastradas' }}</p>
+    <p>Alterações de Humor: {{ paciente.alteracoes_humor or 'Não cadastradas' }}</p>
+    <p>Comportamento Social: {{ paciente.comportamento_social or 'Não cadastradas' }}</p>
+    <a href="{{ url_for('cadastrar_info_adicional', cpf=paciente.cpf) }}">Adicionar/Atualizar Informações Adicionais</a><br>
     <a href="{{ url_for('ver_relatorios', cpf=paciente.cpf) }}">Ver Relatórios</a><br>
     <a href="/home">Voltar ao início</a>
 </body>

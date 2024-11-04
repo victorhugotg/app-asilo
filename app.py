@@ -101,6 +101,7 @@ def cadastrar_info_adicional(cpf):
       paciente["alteracoes_humor"] = request.form.get("alteracoes_humor", "")
       paciente["comportamento_social"] = request.form.get("comportamento_social", "")
 
+      # Redireciona para a página de visualização do paciente
       return redirect(url_for("ver_relatorios", cpf=cpf))
 
   return render_template("cadastrar_info_adicional.html", paciente=paciente)
@@ -115,6 +116,17 @@ def buscar():
               return redirect(url_for("ver_relatorios", cpf=cpf))
       return "<h1>Paciente não encontrado.</h1><a href='/home'>Voltar ao início</a>"
   return render_template("buscar.html")
+
+# Rota para visualizar informações do paciente
+@app.route("/ver_paciente")
+def ver_paciente():
+  cpf = request.args.get("cpf")
+  paciente = next((p for p in pacientes if p["cpf"] == cpf), None)
+
+  if not paciente:
+      return "<h1>Paciente não encontrado.</h1><a href='/home'>Voltar ao início</a>"
+
+  return render_template("ver_paciente.html", paciente=paciente)
 
 # Página para visualizar e adicionar relatórios
 @app.route("/ver_relatorios", methods=["GET", "POST"])
@@ -181,7 +193,18 @@ def adicionar_relatorio(cpf):
           lanche = request.form.get("lanche")
           jantar = request.form.get("jantar")
           ceia = request.form.get("ceia")
-          quantidade_agua = request.form.get("quantidade_agua")  # Novo campo para quantidade de água
+          consumo_categoria = request.form.get("consumo_categoria")  # Novo campo para categoria de consumo
+          
+# Mapeamento das categorias de consumo
+          consumo_map = {
+              "maior_que_2": "Consumo maior que 2 litros",
+              "maior_que_1_menor_que_2": "Consumo maior que 1 litro e menor que 2 litros",
+              "maior_que_500_menor_que_1": "Consumo maior que 500 ml e menor que 1 litro",
+              "menor_que_500": "Consumo menor que 500 ml"
+          }
+
+          # Obter a descrição legível da categoria de consumo
+          consumo_descricao = consumo_map.get(consumo_categoria, "Categoria não especificada")
 
           # Mapeando os valores numéricos para texto
           cafe_da_manha_texto = refeicoes_map.get(cafe_da_manha, "Não especificado")
@@ -267,7 +290,7 @@ def adicionar_relatorio(cpf):
                       }
                   },
                   "hidratacao": {
-                      "quantidade_agua": quantidade_agua,
+                      "consumo_categoria": consumo_categoria,
                       "observacoes": request.form.get("hidratacao_obs", "")
                   }
               },

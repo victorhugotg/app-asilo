@@ -6,7 +6,7 @@
     <title>Cadastrar Informações Adicionais</title>
 </head>
 <body>
-    <h2>Cadastrar Informações Adicionais para {{ paciente['nome'] }}</h2>
+    <h2>Escala Geriátrica </h2>
     <form action="/cadastrar_info_adicional/{{ paciente['cpf'] }}" method="POST">
         <h3>Informações Físicas</h3>
         <label for="doencas_cronicas">Doenças Crônicas:</label>
@@ -15,22 +15,68 @@
         <input type="text" id="alergias" name="alergias"><br>
         <label for="medicamentos">Medicamentos em Uso:</label>
         <input type="text" id="medicamentos" name="medicamentos"><br>
-        <label for="cirurgias">Cirurgias Anteriores:</label>
+        <label for="cirurgias">Cirurgias :</label>
         <input type="text" id="cirurgias" name="cirurgias"><br>
         <label for="historico_internacoes">Histórico de Internações:</label>
         <input type="text" id="historico_internacoes" name="historico_internacoes"><br>
-        <label for="vacinas">Vacinas Tomadas:</label>
-        <input type="text" id="vacinas" name="vacinas"><br>
-        <label for="exames">Exames Recentes:</label>
-        <input type="text" id="exames" name="exames"><br>
+        <label for="condições_cognitivas">Condiçoes Cognitivas:</label>
+        <input type="text" id="condições_cognitivas" name="condiçoes_cognitivas"><br>
+        <label for="anamnese">Anamnese:</label>
+        <input type="text" id="anamnese" name="anamnese"><br>
+        <label for="">Pressão Arterial:</label>
+        <input type="text" id="pressão_arterial" name="pressao_arterial"><br>
+        <label for="glicemia">Glicemia:</label>
+        <input type="text" id="glicemia" name="glicemia"><br>
+        <label for="saturação">Saturação:</label>
+        <input type="text" id="saturação" name="saturacao"><br>
         
-        <h3>Informações Mentais</h3>
-        <label for="condicoes_cognitivas">Condições Cognitivas:</label>
-        <input type="text" id="condicoes_cognitivas" name="condicoes_cognitivas"><br>
-        <label for="alteracoes_humor">Alterações de Humor:</label>
-        <input type="text" id="alteracoes_humor" name="alteracoes_humor"><br>
-        <label for="comportamento_social">Comportamento Social:</label>
-        <input type="text" id="comportamento_social" name="comportamento_social"><br>
+        <h3>Mini Exame do Estado Mental (Pontos)</h3>
+        <label for="diagnostico">Diagóstico:</label>
+        <select id="diagnostico" name="diagnostico" required>
+            <option value="normal_maior_27">Normal Maior 27</option>
+            <option value="demencia_menor_25">Demência Menor 25</option>
+            <option value="baixa_escolaridade_menor_18">Baixa Escolaridade menor 18</option>
+        </select><br>
+
+        <h3>Escala de Depressão Geriátrica (Pontos)</h3>
+        <label for="diagnostico">Diagnóstico:</label>
+        <select id="diagnostico" name="diagnostico" required>
+            <option value="normal_ate_5">Normal Até 5</option>
+            <option value="depressao_maior_5">Depressão Maior 5</option>
+            <option value="depressao_grave_naior_11">Depressão Grave Maior 11</option>
+        </select><br>
+
+        <h3>Escala de Katz</h3>
+        <label for="diagnostico">Diagnóstico:</label>
+        <select id="diagnostico" name="diagnostico" required>
+            <option value="independencia">Independência</option>
+            <option value="dependencia_parcial">Dependência Parcial</option>
+            <option value="dependencia_total">Dependência Total</option>
+        </select><br>
+
+        <h3>Escala de Lawton</h3>
+        <label for="diagnostico">Diagnóstico:</label>
+        <select id="diagnostico" name="diagnostico" required>
+            <option value="independencia">Independência</option>
+            <option value="dependencia_parcial">Dependência Parcial</option>
+            <option value="dependencia_total">Dependência Total</option>
+        </select><br>
+        
+        <h3>Mini Avaliação Nutricional (pontos)</h3>
+        <label for="diagnostico">Diagnóstico:</label>
+        <select id="diagnostico" name="diagnostico" required>
+            <option value="adequado_maior_24">Adequado Maior 24</option>
+            <option value="risco_menos_24">Risco Menor 24</option>
+            <option value="desnutrido_menor_17">Desnutrido Menor 17</option>
+        </select><br>
+
+        <h3>TUG - Timed Up And Go (Segudos)</h3>
+        <label for="diagnostico">Diagnóstico:</label>
+        <select id="diagnostico" name="diagnostico" required>
+            <option value="normal_ate_10">Normal Até 10</option>
+            <option value="deficiencia_fragil_11_a_20">Deficiência ou Frágil 11 a 20 </option>
+            <option value="maior_risco_aima_20">Maior Risco Acima de 20</option>
+        </select><br>
         
         <button type="submit">Salvar Informações Adicionais</button>
     </form>

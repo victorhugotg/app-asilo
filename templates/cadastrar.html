@@ -9,8 +9,16 @@
 <body>
     <h2>Cadastrar Paciente</h2>
     <form action="/cadastrar" method="POST">
-        <label for="nome">Nome Completo:</label>
+        <label for="número_do_hóspede">Número do Hópede:</label>
+        <input type="text" id="número_do_hóspede" name="número_do_hóspede" required><br>
+        <label for="nome_completo">Nome Completo:</label>
         <input type="text" id="nome" name="nome" required><br>
+        <label for="permanência">Tipo de Permanência:</label>
+        <select id="genero" name="genero" required>
+            <option value="curta">Curta</option>
+            <option value="longa">Longa</option>
+            <option value="centro_de_dia">Centro de Dia</option>
+        </select><br>
         <label for="data_nascimento">Data de Nascimento:</label>
         <input type="date" id="data_nascimento" name="data_nascimento" required><br>
         <label for="idade">Idade:</label>
@@ -37,6 +45,55 @@
         <input type="text" id="telefone_responsavel" name="telefone_responsavel"><br>
         <label for="grau_parentesco">Grau de Parentesco:</label>
         <input type="text" id="grau_parentesco" name="grau_parentesco"><br>
+        <label for="profissão">Profissão:</label>
+        <input type="text" id="profissão" name="profissão" required><br>
+        <label for="escolaridade">Escolaridade:</label>
+        <input type="text" id="escolaridade" name="escolaridade" required><br>
+        <label for="religião">Religião:</label>
+        <input type="text" id="religião" name="religião" required><br>
+        <label for="tipo_sanguíneo">Tipo Sanguíneo:</label>
+        <input type="text" id="tipo_sanguíneo" name="tipo_sanguíneo" required><br>
+        <label for="limitação_física">Limtação Física:</label>
+        <select id="limitação_física" name="limitação_física" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="limitação_mental">Limitação Mental:</label>
+        <select id="limitação_mental" name="limitação_mental" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="alergia_alimentar">Alergia Alimentar:</label>
+        <select id="alergia_alimentar" name="alergia_alimentar" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="anafilaxia">Anafilaxia:</label>
+        <select id="anafilaxia" name="anafilaxia" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="asma_alergica">Asma Alergica:</label>
+        <select id="asma_Alergica" name="asma Alergica" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="dermatite_atopica">Dermatite Atopica:</label>
+        <select id="dermatite_atopica" name="dermatite_atopica" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="rinite_alergica">Rinite Alergica:</label>
+        <select id="rinite_alergica" name="rinite_alergica" required>
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="histórico_de_doenças_pregressa">Histórico de Doenças pregressa:</label>
+        <input type="text" id="histórico_de_doenças_pregressa" name="histórico_de_doenças_pregressa"><br>
+        <label for="histórico_familiar">Histórico Familiar:</label>
+        <input type="text" id="histórico_familiar" name="histórico_familiar"><br>
+        <label for="medicamentos">Medicamentos:</label>
+        <input type="text" id="medicamentos" name="medicamentos"><br>
         <button type="submit">Cadastrar</button>
     </form>
     <a href="/">Voltar para Login</a>

@@ -148,10 +148,21 @@
         </div>
 
         <!-- Quantidade de Água Ingerida -->
-        <div>
-            <label for="quantidade_agua">Quantidade de Água Ingerida (em litros):</label>
-            <input type="number" step="0.01" id="quantidade_agua" name="quantidade_agua" required><br><br>
-            <small>Exemplo: 0.5 para 500 ml</small><br><br>
+        <div>      
+            <label for="consumo_categoria">Categoria de Consumo:</label>
+            <select id="consumo_categoria" name="consumo_categoria" required>
+                <option value="maior que 2 litros">Consumo maior que 2 litros</option>
+                <option value="maior que 1 litro menor que 2 litros">Consumo maior que 1 litro e menor que 2 litros</option>
+                <option value="maior que 500 mL menor que 1 litro">Consumo maior que 500 ml e menor que 1 litro</option>
+                <option value="menor que 500 mL">Consumo menor que 500 ml</option>
+            </select><br><h4>Quantidade de Água
+                que deve ser 
+                consumida por dia:
+                 </h4><tr>Peso Corporal (Kg)</tr><br>
+                 <h4>50</h4><tr>
+                 <h4>x35 ml de Água</h4><tr>---------------------</tr><tr>
+                <h4>1,8 Litros p/ dia</h4><br> 
+            
         </div>
 
         <!-- Mobilidade e Higiene -->
