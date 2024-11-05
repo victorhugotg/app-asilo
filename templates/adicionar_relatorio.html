@@ -4,297 +4,438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Relatório</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+        }
+        .container {
+            display: flex; /* Para alinhar os bonecos lado a lado */
+            justify-content: space-around; /* Espaçamento entre os bonecos */
+            margin: 20px 0; /* Margem superior e inferior */
+        }
+
+        .boneco {
+            position: relative;
+            width: 205px;
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow: hidden; /* Para garantir que nada saia do contêiner */
+        }
+
+        .boneco img {
+            width: 100%; /* Faz a imagem ocupar toda a largura do contêiner */
+            height: auto; /* Mantém a proporção da imagem */
+            display: block; /* Remove espaços em branco abaixo da imagem */
+        }
+
+        .x {
+            position: absolute;
+            top: 10px; /* Ajuste a posição do "X" conforme necessário */
+            left: 10px; /* Ajuste a posição do "X" conforme necessário */
+            background-color: red; /* Cor de fundo do "X" */
+            color: white; /* Cor do texto do "X" */
+            text-align: center;
+            line-height: 20px;
+            border-radius: 100%;
+            cursor: pointer; /* Cursor de arrastar */
+        }
+    </style>
 </head>
 <body>
-    <h2>Adicionar Relatório para {{ paciente.nome }}</h2>
-    <form action="" method="POST">
-        <!-- Data e Responsável -->
-        <label for="data">Data:</label>
-        <input type="date" id="data" name="data" required><br><br>
 
-        <label for="responsavel">Responsável (Nome e Função):</label>
-        <input type="text" id="responsavel" name="responsavel" required><br><br>
+<h2>Adicionar Relatório para {{ paciente.nome }}</h2>
+<form action="" method="POST">
+    <!-- Data e Responsável -->
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" required><br><br>
 
-        <!-- Sinais Vitais -->
-        <h3>1. Sinais Vitais:</h3>
-        <label for="pressao">Pressão Arterial:</label>
-        <input type="text" id="pressao" name="pressao" required><br><br>
+    <label for="responsavel">Responsável (Nome e Função):</label>
+    <input type="text" id="responsavel" name="responsavel" required><br><br>
 
-        <label for="frequencia_cardiaca">Frequência Cardíaca:</label>
-        <input type="text" id="frequencia_cardiaca" name="frequencia_cardiaca" required><br><br>
+    <!-- Sinais Vitais -->
+    <h3>1. Sinais Vitais:</h3>
+    <label for="pressao">Pressão Arterial:</label>
+    <input type="text" id="pressao" name="pressao" required><br><br>
 
-        <label for="temperatura">Temperatura:</label>
-        <input type="text" id="temperatura" name="temperatura" required><br><br>
+    <label for="frequencia_cardiaca">Frequência Cardíaca:</label>
+    <input type="text" id="frequencia_cardiaca" name="frequencia_cardiaca" required><br><br>
 
-        <label for="saturacao_oxigenio">Saturação de Oxigênio (%):</label>
-        <input type="text" id="saturacao_oxigenio" name="saturacao_oxigenio" required><br><br>
+    <label for="temperatura">Temperatura:</label>
+    <input type="text" id="temperatura" name="temperatura" required><br><br>
 
-        <label for="frequencia_respiratoria">Frequência Respiratória (rpm):</label>
-        <input type="text" id="frequencia_respiratoria" name="frequencia_respiratoria" required><br><br>
+    <label for="saturacao_oxigenio">Saturação de Oxigênio (%):</label>
+    <input type="text" id="saturacao_oxigenio" name="saturacao_oxigenio" required><br><br>
 
-        <!-- Estado Geral -->
-        <h3>2. Estado Geral:</h3>
-        <label for="consciencia">Consciência:</label>
-        <input type="text" id="consciencia" name="consciencia" required><br><br>
+    <label for="frequencia_respiratoria">Frequência Respiratória (rpm):</label>
+    <input type="text" id="frequencia_respiratoria" name="frequencia_respiratoria" required><br><br>
 
-        <label for="dor">Dor (intensidade de 0 a 10):</label>
-        <input type="text" id="dor" name="dor" required><br><br>
+    <!-- Integridade Cutânea -->
+    <h4>Integridade Cutânea:</h4>
+    <label for="pele_prejudicada">Pele Prejudicada:</label>
+    <select id="pele_prejudicada" name="pele_prejudicada" required>
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
 
-        <!-- Novos Campos de Estado Geral -->
-        <label for="horario_dormir">Horário que foi dormir:</label>
-        <input type="time" id="horario_dormir" name="horario_dormir"><br><br>
+    <label for="tipo_lesao">Tipo de Lesão de Pele:</label>
+    <select id="tipo_lesao" name="tipo_lesao" required>
+        <option value="Nenhuma">Nenhuma</option>
+        <option value="Mácula">Mácula</option>
+        <option value="Pápula">Pápula</option>
+        <option value="Placa">Placa</option>
+        <option value="Nódulo">Nódulo</option>
+        <option value="Vesícula">Vesícula</option>
+        <option value="Bolha">Bolha</option>
+        <option value="Pústula">Pústula</option>
+        <option value="Urticária">Urticária</option>
+        <option value="Escama">Escama</option>
+        <option value="Crosta">Crosta</option>
+        <option value="Erosão">Erosão</option>
+        <option value="Úlcera">Úlcera</option>
+        <option value="Petéquia">Petéquia</option>
+        <option value="Púrpura">Púrpura</option>
+        <option value="Atrofia">Atrofia</option>
+        <option value="Cicatriz">Cicatriz</option>
+        <option value="Telangiectasia">Telangiectasia</option>
+    </select><br><br>
 
-        <label for="horario_despertar">Horário que despertou:</label>
-        <input type="time" id="horario_despertar" name="horario_despertar"><br><br>
+    <label for="troca_curativo">Troca do Curativo:</label>
+    <select id="troca_curativo" name="troca_curativo" required>
+        <option value="Nenhum">Nenhum</option>
+        <option value="Uma troca">Uma troca</option>
+        <option value="Duas trocas">Duas trocas</option>
+        <option value="Três trocas">Três trocas</option>
+    </select><br><br>
 
-        <label for="n_vezes_despertou">Número de vezes que despertou durante a noite:</label>
-        <input type="number" id="n_vezes_despertou" name="n_vezes_despertou" min="0"><br><br>
-
-        <label for="tempo_dia">Tempo que dormiu durante o dia:</label>
-        <input type="text" id="tempo_dia" name="tempo_dia" placeholder="Ex: 2 horas e 30 minutos"><br><br>
-
-        <label for="queixa_falta_ar">Queixa de falta de ar:</label>
-        <input type="text" id="queixa_falta_ar" name="queixa_falta_ar" placeholder="Sim ou Não"><br><br>
-
-        <label for="roncos">Apresenta roncos:</label>
-        <input type="text" id="roncos" name="roncos" placeholder="Sim ou Não"><br><br>
-
-        <!-- Registro de Refeições -->
-        <h3>3. Alimentação:</h3>
-        <div>
-            <label for="tipo_alimentacao">Tipo de Alimentação:</label>
-            <select id="tipo_alimentacao" name="tipo_alimentacao">
-                <option value="">Selecione...</option>
-                <option value="solida">Sólida</option>
-                <option value="pastosa">Pastosa</option>
-                <option value="semi-pastosa">Semi-pastosa</option>
-            </select><br><br>
-
-            <label for="dm">DM - Diabetes Mellitus:</label>
-            <select id="dm" name="dm">
-                <option value="">Selecione...</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-            </select><br><br>
-
-            <label for="hipertensao">Hipertensão:</label>
-            <select id="hipertensao" name="hipertensao">
-                <option value="">Selecione...</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-            </select><br><br>
-
-            <label for="irc">IRC - Insuficiência Renal Crônica:</label>
-            <select id="irc" name="irc">
-                <option value="">Selecione...</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-            </select><br><br>
+    <!-- Seção do Boneco -->
+    <h4>Identificação e Localização:</h4>
+    <div class="container">
+        <div class="boneco" id="boneco1">
+            <img src="{{ url_for('static', filename='imagens/boneco.png') }}" alt="Boneco">
+            <div class="x" draggable="true" ondragstart="drag(event)" id="x1">X</div>
         </div>
-        <div>
-            <label for="cafe_da_manha">Café da Manhã:</label>
-            <select id="cafe_da_manha" name="cafe_da_manha">
-                <option value="">Selecione...</option>
-                <option value="1">Boa Aceitação</option>
-                <option value="2">Aceitação Parcial</option>
-                <option value="3">Recusa</option>
-                <option value="4">Náuseas / Engasgo / Vômito</option>
-            </select><br><br>
-
-            <label for="colacao">Colação:</label>
-            <select id="colacao" name="colacao">
-                <option value="">Selecione...</option>
-                <option value="1">Boa Aceitação</option>
-                <option value="2">Aceitação Parcial</option>
-                <option value="3">Recusa</option>
-                <option value="4">Náuseas / Engasgo / Vômito</option>
-            </select><br><br>
-
-            <label for="almoco">Almoço:</label>
-            <select id="almoco" name="almoco">
-                <option value="">Selecione...</option>
-                <option value="1">Boa Aceitação</option>
-                <option value="2">Aceitação Parcial</option>
-                <option value="3">Recusa</option>
-                <option value="4">Náuseas / Engasgo / Vômito</option>
-            </select><br><br>
-
-            <label for="lanche">Lanche:</label>
-            <select id="lanche" name="lanche">
-                <option value="">Selecione...</option>
-                <option value="1">Boa Aceitação</option>
-                <option value="2">Aceitação Parcial</option>
-                <option value="3">Recusa</option>
-                <option value="4">Náuseas / Engasgo / Vômito</option>
-            </select><br><br>
-
-            <label for="jantar">Jantar:</label>
-            <select id="jantar" name="jantar">
-                <option value="">Selecione...</option>
-                <option value="1">Boa Aceitação</option>
-                <option value="2">Aceitação Parcial</option>
-                <option value="3">Recusa</option>
-                <option value="4">Náuseas / Engasgo / Vômito</option>
-            </select><br><br>
-
-            <label for="ceia">Ceia:</label>
-            <select id="ceia" name="ceia">
-                <option value="">Selecione...</option>
-                <option value="1">Boa Aceitação</option>
-                <option value="2">Aceitação Parcial</option>
-                <option value="3">Recusa</option>
-                <option value="4">Náuseas / Engasgo / Vômito</option>
-            </select><br><br>
+        <div class="boneco" id="boneco2">
+            <img src="{{ url_for('static', filename='imagens/boneco_costas.png') }}" alt="Boneco">
+            <div class="x" draggable="true" ondragstart="drag(event)" id="x2">X</div>
         </div>
-
-        <!-- Quantidade de Água Ingerida -->
-        <div>      
-            <label for="consumo_categoria">Categoria de Consumo:</label>
-            <select id="consumo_categoria" name="consumo_categoria" required>
-                <option value="maior que 2 litros">Consumo maior que 2 litros</option>
-                <option value="maior que 1 litro menor que 2 litros">Consumo maior que 1 litro e menor que 2 litros</option>
-                <option value="maior que 500 mL menor que 1 litro">Consumo maior que 500 ml e menor que 1 litro</option>
-                <option value="menor que 500 mL">Consumo menor que 500 ml</option>
-            </select><br><h4>Quantidade de Água
-                que deve ser 
-                consumida por dia:
-                 </h4><tr>Peso Corporal (Kg)</tr><br>
-                 <h4>50</h4><tr>
-                 <h4>x35 ml de Água</h4><tr>---------------------</tr><tr>
-                <h4>1,8 Litros p/ dia</h4><br> 
-            
+        <div class="boneco" id="boneco3">
+            <img src="{{ url_for('static', filename='imagens/boneca.png') }}" alt="Boneco">
+            <div class="x" draggable="true" ondragstart="drag(event)" id="x3">X</div>
         </div>
+        <div class="boneco" id="boneco4">
+            <img src="{{ url_for('static', filename='imagens/boneca_costas.png') }}" alt="Boneco">
+            <div class="x" draggable="true" ondragstart="drag(event)" id="x4">X</div>
+        </div>
+    </div>
+    <p>Arraste o "X" e marque o local na Figura</p>
 
-        <!-- Mobilidade e Higiene -->
-        <h3>4. Mobilidade e Higiene:</h3>
-        <label for="mobilidade">Mobilidade:</label>
-        <input type="text" id="mobilidade" name="mobilidade" required><br><br>
+    <!-- Novo Tópico: Prescrição do Curativo -->
+    <label for="prescricao_curativo">Prescrição do Curativo:</label><br>
+    <textarea id="prescricao_curativo" name="prescricao_curativo" rows="4" cols="50" placeholder="Digite a prescrição do curativo aqui..."></textarea><br><br>
 
-        <label for="higiene">Higiene (fraldas trocadas, etc.):</label>
-        <input type="text" id="higiene" name="higiene" required><br><br>
+    <!-- Novo Tópico: Observações -->
+    <label for="observacoes">Observações:</label><br>
+    <textarea id="observacoes" name="observacoes" rows="4" cols="50" placeholder="Digite suas observações aqui..."></textarea><br><br>
 
-        <!-- Medicamentos -->
-        <h3>5. Medicamentos:</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Aprazamento/Horas</th>
-                    <th>Medicação</th>
-                    <th>Dose</th>
-                    <th>Via</th>
-                    <th>Situação</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in range(10) %}
-                <tr>
-                    <td>
-                        <select name="aprazamento{{ i }}">
-                            <option value="">Selecione...</option>
-                            <option value="Em Jejum">Em Jejum</option>
-                            <option value="Antes do Almoço">Antes do Almoço</option>
-                            <option value="Durante o Almoço">Durante o Almoço</option>
-                            <option value="Antes do Jantar">Antes do Jantar</option>
-                            <option value="08:00">08:00</option>
-                            <option value="08:30">08:30</option>
-                            <option value="09:00">09:00</option>
-                            <option value="09:30">09:30</option>
-                            <option value="10:00">10:00</option>
-                            <option value="10:30">10:30</option>
-                            <option value="11:00">11:00</option>
-                            <option value="11:30">11:30</option>
-                            <option value="12:00">12:00</option>
-                            <option value="12:30">12:30</option>
-                            <option value="13:00">13:00</option>
-                            <option value="13:30">13:30</option>
-                            <option value="14:00">14:00</option>
-                            <option value="14:30">14:30</option>
-                            <option value="15:00">15:00</option>
-                            <option value="15:30">15:30</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="medicacao{{ i }}" placeholder="Medicação">
-                    </td>
-                    <td>
-                        <select name="dose{{ i }}">
-                            <option value="">Selecione...</option>
-                            <option value="AP/AMP">AP/AMP (ampola)</option>
-                            <option value="CAP">CAP (cápsula)</option>
-                            <option value="Col">Col (colírio)</option>
-                            <option value="CP/comp">CP/comp (comprimido)</option>
-                            <option value="CR">CR (creme)</option>
-                            <option value="DG">DG (drágeas)</option>
-                            <option value="ENV">ENV (envelope)</option>
-                            <option value="FL">FL (flaconete)</option>
-                            <option value="Gt/gts">Gt/gts (gotas)</option>
-                            <option value="mcg">mcg (micrograma)</option>
-                            <option value="mg">mg (miligrama)</option>
-                            <option value="mL">mL (mililitro)</option>
-                            <option value="NBZ">NBZ (nebulização)</option>
-                            <option value="SF">SF (solução fisiológica)</option>
-                            <option value="SG">SG (solução glicosada)</option>
-                            <option value="SNE">SNE (sonda nasoenteral)</option>
-                            <option value="SNG">SNG (sonda naso-gástrica)</option>
-                            <option value="SP/Sup">SP/Sup (supositório)</option>
-                            <option value="SY">SY (spray)</option>
-                            <option value="TB">TB (tubo)</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="via{{ i }}">
-                            <option value="">Selecione...</option>
-                            <option value="Via Oral - VO">Via Oral - VO</option>
-                            <option value="Sublingual - SL">Sublingual - SL (sob a língua)</option>
-                            <option value="Via Bucal">Via Bucal (entre a gengiva e a bochecha)</option>
-                            <option value="Via Retal - VR">Via Retal - VR (no reto)</option>
-                            <option value="Via Vaginal - VV">Via Vaginal - VV (na vagina)</option>
-                            <option value="Intravenosa - IV">Intravenosa - IV (injetável na veia)</option>
-                            <option value="Via Intra Muscular - IM">Via Intra Muscular - IM (injetável no músculo)</option>
-                            <option value="Via Subcutânea - SC">Via Subcutânea - SC (injetável sob a pele)</option>
-                            <option value="Hipodermóclise">Hipodermóclise</option>
-                            <option value="Via Ocular">Via Ocular (no olho)</option>
-                            <option value="Via Otológica">Via Otológica (no ouvido)</option>
-                            <option value="Via Nasal">Via Nasal (no nariz)</option>
-                            <option value="Via Inalatória">Via Inalatória (pela boca)</option>
-                            <option value="Via por Nebulização - NBZ">Via por Nebulização - NBZ</option>
-                            <option value="Via Cutânea - Tópico">Via Cutânea - Tópico (efeito local, aplicado na pele)</option>
-                            <option value="Via Cutânea - Sistêmico">Via Cutânea - Sistêmico (aplicado na pele em todo o corpo)</option>
-                            <option value="Via Transdérmica - TD">Via Transdérmica - TD (aplicado na pele, através de adesivo)</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="situacao{{ i }}" id="situacao{{ i }}" onchange="updateStatusDot({{ i }})">
-                            <option value="Por Administrar">Por Administrar</option>
-                            <option value="Administrado">Administrado</option>
-                        </select>
-                        <span id="status-dot{{ i }}" class="status-dot" style="color: red;">&#9679;</span>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <br><br>
+    <!-- Estado Geral -->
+    <h3>2. Estado Geral:</h3>
+    <label for="consciencia">Consciência:</label>
+    <input type="text" id="consciencia" name="consciencia" required><br><br>
 
-        <!-- Observações Gerais -->
-        <h3>6. Observações:</h3>
-        <textarea id="observacoes" name="observacoes" rows="4"></textarea><br><br>
+    <label for="dor">Dor (intensidade de 0 a 10):</label>
+    <input type="text" id="dor" name="dor" required><br><br>
 
-        <input type="submit" value="Salvar Relatório">
-    </form>
+    <!-- Novos Campos de Estado Geral -->
+    <label for="horario_dormir">Horário que foi dormir:</label>
+    <input type="time" id="horario_dormir" name="horario_dormir"><br><br>
 
-    <a href="{{ url_for('ver_relatorios', cpf=paciente.cpf) }}">Voltar para Relatórios</a>
+    <label for="horario_despertar">Horário que despertou:</label>
+    <input type="time" id="horario_despertar" name="horario_despertar"><br><br>
 
-    <script>
-        function updateStatusDot(index) {
-            const selectElement = document.getElementById(`situacao${index}`);
-            const statusDot = document.getElementById(`status-dot${index}`);
-            if (selectElement.value === "Administrado") {
-                statusDot.style.color = "green";
-            } else {
-                statusDot.style.color = "red";
-            }
+    <label for="n_vezes_despertou">Número de vezes que despertou durante a noite:</label>
+    <input type="number" id="n_vezes_despertou" name="n_vezes_despertou" min="0"><br><br>
+
+    <label for="tempo_dia">Tempo que dormiu durante o dia:</label>
+    <input type="text" id="tempo_dia" name="tempo_dia" placeholder="Ex: 2 horas e 30 minutos"><br><br>
+
+    <label for="queixa_falta_ar">Queixa de falta de ar:</label>
+    <input type="text" id="queixa_falta_ar" name="queixa_falta_ar" placeholder="Sim ou Não"><br><br>
+
+    <label for="roncos">Apresenta roncos:</label>
+    <input type="text" id="roncos" name="roncos" placeholder="Sim ou Não"><br><br>
+
+    <!-- Registro de Refeições -->
+    <h3>3. Alimentação:</h3>
+    <div>
+        <label for="tipo_alimentacao">Tipo de Alimentação:</label>
+        <select id="tipo_alimentacao" name="tipo_alimentacao">
+            <option value="">Selecione...</option>
+            <option value="Sólida">Sólida</option>
+            <option value="Pastosa">Pastosa</option>
+            <option value="Semi-pastosa">Semi-pastosa</option>
+        </select><br><br>
+
+        <label for="dm">DM - Diabetes Mellitus:</label>
+        <select id="dm" name="dm">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br><br>
+
+        <label for="hipertensao">Hipertensão:</label>
+        <select id="hipertensao" name="hipertensao">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br><br>
+
+        <label for="irc">IRC - Insuficiência Renal Crônica:</label>
+        <select id="irc" name="irc">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br><br>
+    </div>
+    <div>
+        <label for="cafe_da_manha">Café da Manhã:</label>
+        <select id="cafe_da_manha" name="cafe_da_manha">
+            <option value="">Selecione...</option>
+            <option value="1">Boa Aceitação</option>
+            <option value="2">Aceitação Parcial</option>
+            <option value="3">Recusa</option>
+            <option value="4">Náuseas / Engasgo / Vômito</option>
+        </select><br><br>
+
+        <label for="colacao">Colação:</label>
+        <select id="colacao" name="colacao">
+            <option value="">Selecione...</option>
+            <option value="1">Boa Aceitação</option>
+            <option value="2">Aceitação Parcial</option>
+            <option value="3">Recusa</option>
+            <option value="4">Náuseas / Engasgo / Vômito</option>
+        </select><br><br>
+
+        <label for="almoco">Almoço:</label>
+        <select id="almoco" name="almoco">
+            <option value="">Selecione...</option>
+            <option value="1">Boa Aceitação</option>
+            <option value="2">Aceitação Parcial</option>
+            <option value="3">Recusa</option>
+            <option value="4">Náuseas / Engasgo / Vômito</option>
+        </select><br><br>
+
+        <label for="lanche">Lanche:</label>
+        <select id="lanche" name="lanche">
+            <option value="">Selecione...</option>
+            <option value="1">Boa Aceitação</option>
+            <option value="2">Aceitação Parcial</option>
+            <option value="3">Recusa</option>
+            <option value="4">Náuseas / Engasgo / Vômito</option>
+        </select><br><br>
+
+        <label for="jantar">Jantar:</label>
+        <select id="jantar" name="jantar">
+            <option value="">Selecione...</option>
+            <option value="1">Boa Aceitação</option>
+            <option value="2">Aceitação Parcial</option>
+            <option value="3">Recusa</option>
+            <option value="4">Náuseas / Engasgo / Vômito</option>
+        </select><br><br>
+
+        <label for="ceia">Ceia:</label>
+        <select id="ceia" name="ceia">
+            <option value="">Selecione...</option>
+            <option value="1">Boa Aceitação</option>
+            <option value="2">Aceitação Parcial</option>
+            <option value="3">Recusa</option>
+            <option value="4">Náuseas / Engasgo / Vômito</option>
+        </select><br><br>
+    </div>
+
+    <!-- Quantidade de Água Ingerida -->
+    <div>      
+        <label for="consumo_categoria">Categoria de Consumo:</label>
+        <select id="consumo_categoria" name="consumo_categoria" required>
+            <option value="Menor que 500 mL">Consumo menor que 500 ml</option>
+            <option value="Maior que 500 mL menor que 1 litro">Consumo maior que 500 ml e menor que 1 litro</option>
+            <option value="Maior que 1 litro menor que 2 litros">Consumo maior que 1 litro e menor que 2 litros</option>
+            <option value="Maior que 2 litros">Consumo maior que 2 litros</option>
+        </select><br>
+        <h4>Quantidade de Água que deve ser consumida por dia:</h4>
+        <tr>Peso Corporal (Kg)</tr><br>
+        <h4>50</h4><tr>
+        <h4>x35 ml de Água</h4><tr>---------------------</tr><tr>
+        <h4>1,8 Litros p/ dia</h4><br> 
+    </div>
+
+    <!-- Mobilidade e Higiene -->
+    <h3>4. Mobilidade e Higiene:</h3>
+    <label for="mobilidade">Mobilidade:</label>
+    <input type="text" id="mobilidade" name="mobilidade" required><br><br>
+
+    <label for="higiene">Higiene (fraldas trocadas, etc.):</label>
+    <input type="text" id="higiene" name="higiene" required><br><br>
+
+    <!-- Medicamentos -->
+    <h3>5. Medicamentos:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Aprazamento/Horas</th>
+                <th>Medicação</th>
+                <th>Dose</th>
+                <th>Via</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(10) %}
+            <tr>
+                <td>
+                    <select name="aprazamento{{ i }}">
+                        <option value="">Selecione...</option>
+                        <option value="Em Jejum">Em Jejum</option>
+                        <option value="Antes do Almoço">Antes do Almoço</option>
+                        <option value="Durante o Almoço">Durante o Almoço</option>
+                        <option value="Antes do Jantar">Antes do Jantar</option>
+                        <option value="08:00">08:00</option>
+                        <option value="08:30">08:30</option>
+                        <option value="09:00">09:00</option>
+                        <option value="09:30">09:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="medicacao{{ i }}" placeholder="Medicação">
+                </td>
+                <td>
+                    <select name="dose{{ i }}">
+                        <option value="">Selecione...</option>
+                        <option value="AP/AMP">AP/AMP (ampola)</option>
+                        <option value="CAP">CAP (cápsula)</option>
+                        <option value="Col">Col (colírio)</option>
+                        <option value="CP/comp">CP/comp (comprimido)</option>
+                        <option value="CR">CR (creme)</option>
+                        <option value="DG">DG (drágeas)</option>
+                        <option value="ENV">ENV (envelope)</option>
+                        <option value="FL">FL (flaconete)</option>
+                        <option value="Gt/gts">Gt/gts (gotas)</option>
+                        <option value="mcg">mcg (micrograma)</option>
+                        <option value="mg">mg (miligrama)</option>
+                        <option value="mL">mL (mililitro)</option>
+                        <option value="NBZ">NBZ (nebulização)</option>
+                        <option value="SF">SF (solução fisiológica)</option>
+                        <option value="SG">SG (solução glicosada)</option>
+                        <option value="SNE">SNE (sonda nasoenteral)</option>
+                        <option value="SNG">SNG (sonda naso-gástrica)</option>
+                        <option value="SP/Sup">SP/Sup (supositório)</option>
+                        <option value="SY">SY (spray)</option>
+                        <option value="TB">TB (tubo)</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="via{{ i }}">
+                        <option value="">Selecione...</option>
+                        <option value="Via Oral - VO">Via Oral - VO</option>
+                        <option value="Sublingual - SL">Sublingual - SL (sob a língua)</option>
+                        <option value="Via Bucal">Via Bucal (entre a gengiva e a bochecha)</option>
+                        <option value="Via Retal - VR">Via Retal - VR (no reto)</option>
+                        <option value="Via Vaginal - VV">Via Vaginal - VV (na vagina)</option>
+                        <option value="Intravenosa - IV">Intravenosa - IV (injetável na veia)</option>
+                        <option value="Via Intra Muscular - IM">Via Intra Muscular - IM (injetável no músculo)</option>
+                        <option value="Via Subcutânea - SC">Via Subcutânea - SC (injetável sob a pele)</option>
+                        <option value="Hipodermóclise">Hipodermóclise</option>
+                        <option value="Via Ocular">Via Ocular (no olho)</option>
+                        <option value="Via Otológica">Via Otológica (no ouvido)</option>
+                        <option value="Via Nasal">Via Nasal (no nariz)</option>
+                        <option value="Via Inalatória">Via Inalatória (pela boca)</option>
+                        <option value="Via por Nebulização - NBZ">Via por Nebulização - NBZ</option>
+                        <option value="Via Cutânea - Tópico">Via Cutânea - Tópico (efeito local, aplicado na pele)</option>
+                        <option value="Via Cutânea - Sistêmico">Via Cutânea - Sistêmico (aplicado na pele em todo o corpo)</option>
+                        <option value="Via Transdérmica - TD">Via Transdérmica - TD (aplicado na pele, através de adesivo)</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="situacao{{ i }}" id="situacao{{ i }}" onchange="updateStatusDot({{ i }})">
+                        <option value="Por Administrar">Por Administrar</option>
+                        <option value="Administrado">Administrado</option>
+                    </select>
+                    <span id="status-dot{{ i }}" class="status-dot" style="color: red;">&#9679;</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+
+    <!-- Observações Gerais -->
+    <h3>6. Observações:</h3>
+    <textarea id="observacoes" name="observacoes" rows="4"></textarea><br><br>
+
+    <input type="hidden" id="localizacao" name="localizacao">
+
+    <input type="submit" value="Salvar Relatório">
+</form>
+
+<a href="{{ url_for('ver_relatorios', cpf=paciente.cpf) }}">Voltar para Relatórios</a>
+
+<script>
+    function updateStatusDot(index) {
+        const selectElement = document.getElementById(`situacao${index}`);
+        const statusDot = document.getElementById(`status-dot${index}`);
+        if (selectElement.value === "Administrado") {
+            statusDot.style.color = "green";
+        } else {
+            statusDot.style.color = "red";
         }
-    </script>
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    document.querySelectorAll('.boneco').forEach(boneco => {
+        boneco.addEventListener('dragover', (ev) => {
+            ev.preventDefault();
+        });
+
+        boneco.addEventListener('drop', (ev) => {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const xElement = document.getElementById(data);
+            const rect = boneco.getBoundingClientRect();
+            const x = ev.clientX - rect.left - (xElement.offsetWidth / 2);
+            const y = ev.clientY - rect.top - (xElement.offsetHeight / 2);
+            xElement.style.left = `${x}px`;
+            xElement.style.top = `${y}px`;
+            xElement.style.position = 'absolute';
+            boneco.appendChild(xElement);
+
+            // Atualiza a localização do X
+            const localizacao = [];
+            document.querySelectorAll('.x').forEach(x => {
+                const boneco = x.parentElement.id;
+                const rect = x.getBoundingClientRect();
+                const bonecoRect = document.getElementById(boneco).getBoundingClientRect();
+                const xPos = rect.left - bonecoRect.left; // Posição X relativa ao boneco
+                const yPos = rect.top - bonecoRect.top;   // Posição Y relativa ao boneco
+                localizacao.push({ boneco: boneco, x: xPos, y: yPos });
+            });
+            document.getElementById('localizacao').value = JSON.stringify(localizacao);
+            console.log(localizacao); // Para ver as coordenadas no console
+        });
+    });
+</script>
+
 </body>
 </html>

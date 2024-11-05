@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import datetime
+import json  # Importando json para manipulação de dados JSON
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='static')
 app.secret_key = 'secret_key'  # Necessário para usar sessões
 
 # Lista para armazenar os dados dos pacientes e seus relatórios
@@ -166,13 +167,29 @@ def adicionar_relatorio(cpf):
           pressao = request.form.get("pressao")
           frequencia_cardiaca = request.form.get("frequencia_cardiaca")
           temperatura = request.form.get("temperatura")
-          saturacao_oxigeno = request.form.get("saturacao_oxigenio")  # Captura o campo corretamente
-          frequencia_respiratoria = request.form.get("frequencia_respiratoria")  # Captura o campo corretamente
+          saturacao_oxigeno = request.form.get("saturacao_oxigenio")
+          frequencia_respiratoria = request.form.get("frequencia_respiratoria")
           consciencia = request.form.get("consciencia")
           dor = request.form.get("dor")
           mobilidade = request.form.get("mobilidade")
           higiene = request.form.get("higiene")
           observacoes = request.form.get("observacoes")
+
+          # Captura os dados da integridade cutânea
+          pele_prejudicada = request.form.get("pele_prejudicada")
+          tipo_lesao = request.form.get("tipo_lesao")
+          troca_curativo = request.form.get("troca_curativo")
+
+          # Captura os novos campos
+          prescricao_curativo = request.form.get("prescricao_curativo")  # Novo campo
+          observacoes_curativo = request.form.get("observacoes")  # Observações já existente
+
+          # Captura a localização do "X"
+          localizacao = request.form.get("localizacao")
+          if localizacao:
+            localizacao = json.loads(localizacao)
+          else:
+            localizacao = []  
 
           # Informações de sono
           horario_dormir = request.form.get("horario_dormir")
@@ -194,8 +211,8 @@ def adicionar_relatorio(cpf):
           jantar = request.form.get("jantar")
           ceia = request.form.get("ceia")
           consumo_categoria = request.form.get("consumo_categoria")  # Novo campo para categoria de consumo
-          
-# Mapeamento das categorias de consumo
+
+          # Mapeamento das categorias de consumo
           consumo_map = {
               "maior_que_2": "Consumo maior que 2 litros",
               "maior_que_1_menor_que_2": "Consumo maior que 1 litro e menor que 2 litros",
@@ -222,7 +239,7 @@ def adicionar_relatorio(cpf):
               dose = request.form.get(f"dose{i}")
               via = request.form.get(f"via{i}")
               situacao = request.form.get(f"situacao{i}", "Por Administrar")  # Captura o status do medicamento
-              
+
               if any([aprazamento, medicacao, dose, via]):  # Verifica se pelo menos um campo foi preenchido
                   medicamentos.append({
                       "aprazamento": aprazamento,
@@ -255,6 +272,14 @@ def adicionar_relatorio(cpf):
                       "falta_de_ar": falta_de_ar,
                       "roncos": roncos
                   }
+              },
+              "integridade_cutanea": {
+                  "pele_prejudicada": pele_prejudicada,
+                  "tipo_lesao": tipo_lesao,
+                  "troca_curativo": troca_curativo,
+                  "prescricao_curativo": prescricao_curativo,
+                  "observacoes_curativo": observacoes_curativo,
+                  "localizacao": localizacao  # Armazena a localização do "X"
               },
               "alimentacao_hidratacao": {
                   "tipo_alimentacao": tipo_alimentacao,
@@ -303,7 +328,9 @@ def adicionar_relatorio(cpf):
               "cadastrado_por": session.get('user', 'Desconhecido')
           }
 
+          # Adiciona o relatório à lista de relatórios do paciente
           paciente["relatorios"].append(relatorio)
+         # print("localização do X:", localizacao)
 
           return redirect(url_for("ver_relatorios", cpf=cpf))
       except Exception as e:
@@ -311,7 +338,7 @@ def adicionar_relatorio(cpf):
 
   return render_template("adicionar_relatorio.html", paciente=paciente)
 
-# Rota para visualizar relatório por data
+# Rota para visualizar relatório por data 
 @app.route("/relatorio_por_data", methods=["GET"])
 def relatorio_por_data():
   return render_template("relatorio_por_data.html")
