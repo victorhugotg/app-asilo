@@ -55,20 +55,163 @@
     <input type="text" id="responsavel" name="responsavel" required><br><br>
 
     <!-- Sinais Vitais -->
-    <h3>1. Sinais Vitais:</h3>
-    <label for="pressao">Pressão Arterial:</label>
-    <input type="text" id="pressao" name="pressao" required><br><br>
+    <!-- Tabela de Temperatura Axilar -->
+    <h3>1 - Sinais Vitais</h3><br><br>
+    <h3>Pressão Arterial (PA)-mmHg</h3>
+    <table border="1" style="width: 100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Estágio</th>
+                <th>PA Sistólica (mmHg)</th>
+                <th>PA Diastólica (mmHg)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Normal</td>
+                <td>&lt; ou = 120</td>
+                <td> &lt; ou = 80</td>
+            </tr>
+            <tr>
+                <td>Pré-Hipertensão</td>
+                <td> 121 até  139</td>
+                <td>81 até 89</td>
+            </tr>
+            <tr>
+                <td>Hipertensão - Estágio 1</td>
+                <td>140 até 159</td>
+                <td>90 até 99</td>
+            </tr>
+            <tr>
+                <td>Hipertensão - Estágio 2</td>
+                <td>160 até 179</td>
+                <td>100 até 109</td>
+            </tr>
+            <tr>
+                <td>Hipertensão - Estágio 3</td>
+                <td>&gt; ou = 180</td>
+                <td>&gt; = 110</td>
+            </tr>
+            <tr>
+                <td>Hipertensão Sistólica Isolada</td>
+                <td>&gt; ou = 140</td>
+                <td>&lt;90 </td>
+            </tr>
+        </tbody>
+    </table>
 
-    <label for="frequencia_cardiaca">Frequência Cardíaca:</label>
+    <!-- Caixa de texto para o usuário -->
+    <label for="pressao">Digite a pressão arterial medida:</label><br>
+    <input type="text" id="pressao" name="pressao" placeholder="" required><br><br>
+
+    <h3>Pulso (P) - bpm</h3>
+    <table border="1" style="width: 100%; text-align: left;">
+        <tbody>
+            <tr>
+                <td>Bradicárdico  &lt; 60</td>
+            </tr>
+            <tr>
+                <td>Normocárdico  60 até 100</td>
+            </tr>
+            <tr>
+                <td>Taquicárdico  &gt; 100</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <label for="frequencia_cardiaca">Digite o Pulso medido:</label>
     <input type="text" id="frequencia_cardiaca" name="frequencia_cardiaca" required><br><br>
 
-    <label for="temperatura">Temperatura:</label>
-    <input type="text" id="temperatura" name="temperatura" required><br><br>
+    <!-- Tabela de Temperatura Axilar -->
+    <h3>Temperatura Axilar (Tax) - °C</h3>
+    <table border="1" style="width: 100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Faixa de Temperatura</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hipotermia</td>
+                <td>&lt; 35,5</td>
+            </tr>
+            <tr>
+                <td>Normotermia</td>
+                <td>35,5 até 37,7</td>
+            </tr>
+            <tr>
+                <td>Febril</td>
+                <td>&gt; 37,8 até 38,0</td>
+            </tr>
+            <tr>
+                <td>Febre</td>
+                <td>&gt; 38,0 até 39,0</td>
+            </tr>
+            <tr>
+                <td>Febre Alta (Pirexia)</td>
+                <td>&gt; 39,0 até 40,0</td>
+            </tr>
+            <tr>
+                <td>Febre Muito Alta (Hiperpirexia)</td>
+                <td>&gt; 40,0 até 41,0</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <label for="saturacao_oxigenio">Saturação de Oxigênio (%):</label>
-    <input type="text" id="saturacao_oxigenio" name="saturacao_oxigenio" required><br><br>
+    <!-- Caixa de texto para o usuário -->
+    <label for="temperatura">Digite a temperatura axilar medida:</label>
+    <input type="text" id="temperatura" name="temperatura" placeholder="" required><br><br>
 
-    <label for="frequencia_respiratoria">Frequência Respiratória (rpm):</label>
+    <h3>Saturação (Sp02) - %</h3>
+    <table border="1" style="width: 100%; text-align: left;">
+        <tbody>
+            <tr>
+                <td>Normal 93 a 99</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <label for="saturacao_oxigenio">Digite a saturação de oxigênio (%) medida:</label>
+    <input type="text" id="saturacao_oxigenio" name="saturacao_oxigenio" required>
+
+    <h3>Glicemia Capilar GCAP - mg/dl</h3>
+    <table border="1" style="width: 100%; text-align: left;">
+        <tbody>
+            <tr>
+                <td>Hipoglicemia &lt; 60 (emergência - risco de vida)</td>
+            </tr>
+            <tr>
+                <td>Pós Prandial (para não diabéticos)</td>
+            </tr>
+            <tr>
+                <td>Pós Prandial 160 até 180 (normal para diabéticos)</td>
+            </tr>
+            <tr>
+                <td>Hiperglicemia &gt;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <label for="glicemia">Digite a glicemia capilar (mg/dl) medida:</label>
+    <input type="text" id="glicemia" name="glicemia" required><br><br>
+
+    <h3>Respiração (R) - rpm</h3>
+    <table border="1" style="width: 100%; text-align: left;">
+        <tbody>
+            <tr>
+                <td>Bradipnea &lt; 60</td>
+            </tr>
+            <tr>
+                <td>Eupneia  12 até 20</td>
+            </tr>
+            <tr>
+                <td>Taquipnea  &gt; 20</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <label for="frequencia_respiratoria">Digite a respiração medida:</label>
     <input type="text" id="frequencia_respiratoria" name="frequencia_respiratoria" required><br><br>
 
     <!-- Integridade Cutânea -->
@@ -144,9 +287,25 @@
     <label for="consciencia">Consciência:</label>
     <input type="text" id="consciencia" name="consciencia" required><br><br>
 
+    <label for="horario_dor">Horário da dor:</label>
+    <input type="time" id="horario_dor" name="horario_dor"><br><br>
+
     <label for="dor">Dor (intensidade de 0 a 10):</label>
     <input type="text" id="dor" name="dor" required><br><br>
 
+    <label for="local_dor">Local da dor:</label>
+    <select id="local_dor" name="local_dor">
+        <option value="Sem dor">Sem dor</option>
+        <option value="Cabeça">Cabeça</option>
+        <option value="Coração">Coração</option>
+        <option value="Pulmões">Pulmões</option>
+        <option value="Estômago">Estômago</option>
+        <option value="Rins">Rins</option>
+        <option value="Joelho">Joelho</option>
+        <option value="Perna">Perna</option>
+        <option value="Pé">Pé</option>
+    
+    </select><br><br>
     <!-- Novos Campos de Estado Geral -->
     <label for="horario_dormir">Horário que foi dormir:</label>
     <input type="time" id="horario_dormir" name="horario_dormir"><br><br>

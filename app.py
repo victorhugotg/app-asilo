@@ -168,9 +168,12 @@ def adicionar_relatorio(cpf):
           frequencia_cardiaca = request.form.get("frequencia_cardiaca")
           temperatura = request.form.get("temperatura")
           saturacao_oxigeno = request.form.get("saturacao_oxigenio")
+          glicemia = request.form.get("glicemia")  # Captura a glicemia
           frequencia_respiratoria = request.form.get("frequencia_respiratoria")
           consciencia = request.form.get("consciencia")
+          horario_dor = request.form.get("horario_dor")
           dor = request.form.get("dor")
+          local_dor = request.form.get("local_dor")
           observacoes = request.form.get("observacoes")
 
           # Captura os dados da integridade cutânea
@@ -193,9 +196,9 @@ def adicionar_relatorio(cpf):
           # Informações de sono
           horario_dormir = request.form.get("horario_dormir")
           horario_despertar = request.form.get("horario_despertar")
-          n_vezes_despertou = request.form.get("n_vezes_despertou")  # Corrigido para corresponder ao nome do campo
-          tempo_dia = request.form.get("tempo_dia")  # Corrigido para corresponder ao nome do campo
-          queixa_falta_ar = request.form.get("queixa_falta_ar")  # Corrigido para corresponder ao nome do campo
+          n_vezes_despertou = request.form.get("n_vezes_despertou")
+          tempo_dia = request.form.get("tempo_dia")
+          queixa_falta_ar = request.form.get("queixa_falta_ar")
           roncos = request.form.get("roncos")
 
           # Captura os dados do humor
@@ -306,11 +309,14 @@ def adicionar_relatorio(cpf):
                   "frequencia_cardiaca": frequencia_cardiaca,
                   "temperatura": temperatura,
                   "saturacao_oxigeno": saturacao_oxigeno,
+                  "glicemia": glicemia,  # Adicionado
                   "frequencia_respiratoria": frequencia_respiratoria
               },
               "estado_geral": {
                   "consciencia": consciencia,
+                  "horario_dor": horario_dor,
                   "dor": dor,
+                  "local_dor": local_dor,
                   "sono": {
                       "horario_dormir": horario_dormir,
                       "horario_despertar": horario_despertar,
