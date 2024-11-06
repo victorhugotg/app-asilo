@@ -106,14 +106,21 @@
         <label for="time">Horário:</label>
         <select id="time">
             <!-- Horários de 15 em 15 minutos -->
-            <option>00:00</option>
-            <option>00:15</option>
-            <option>00:30</option>
-            <option>00:45</option>
-            <!-- Continue com outros horários aqui -->
-            <option>23:45</option>
         </select>
     </div>
+    <script>
+        const select = document.getElementById('time');
+        for (let hour = 0; hour < 24; hour++) {
+            for (let minute = 0; minute < 60; minute += 15) {
+                const option = document.createElement('option');
+                const formattedHour = hour.toString().padStart(2, '0');
+                const formattedMinute = minute.toString().padStart(2, '0');
+                option.value = `${formattedHour}:${formattedMinute}`;
+                option.textContent = `${formattedHour}:${formattedMinute}`;
+                select.appendChild(option);
+            }
+        }
+    </script>
 </div>
 <div class="section">
     <h2>Registro do Humor:</h2>
