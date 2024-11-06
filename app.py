@@ -193,9 +193,9 @@ def adicionar_relatorio(cpf):
           # Informações de sono
           horario_dormir = request.form.get("horario_dormir")
           horario_despertar = request.form.get("horario_despertar")
-          num_despertares = request.form.get("n_vezes_despertou")  # Corrigido para corresponder ao nome do campo
-          tempo_dormido_dia = request.form.get("tempo_dia")  # Corrigido para corresponder ao nome do campo
-          falta_de_ar = request.form.get("queixa_falta_ar")  # Corrigido para corresponder ao nome do campo
+          n_vezes_despertou = request.form.get("n_vezes_despertou")  # Corrigido para corresponder ao nome do campo
+          tempo_dia = request.form.get("tempo_dia")  # Corrigido para corresponder ao nome do campo
+          queixa_falta_ar = request.form.get("queixa_falta_ar")  # Corrigido para corresponder ao nome do campo
           roncos = request.form.get("roncos")
 
           # Captura os dados do humor
@@ -314,9 +314,9 @@ def adicionar_relatorio(cpf):
                   "sono": {
                       "horario_dormir": horario_dormir,
                       "horario_despertar": horario_despertar,
-                      "num_despertares": num_despertares,
-                      "tempo_dormido_dia": tempo_dormido_dia,
-                      "falta_de_ar": falta_de_ar,
+                      "n_vezes_despertou": n_vezes_despertou,
+                      "tempo_dia": tempo_dia,
+                      "queixa_falta_ar": queixa_falta_ar,
                       "roncos": roncos
                   }
               },

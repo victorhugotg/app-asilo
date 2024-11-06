@@ -111,33 +111,37 @@
                         <div class="boneco" id="boneco1">
                             <img src="{{ url_for('static', filename='imagens/boneco.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
-                                {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
-                                {% endfor %}
+                                {% set localizacao_boneco1 = relatorio['integridade_cutanea']['localizacao'] | selectattr('boneco', 'equalto', 'boneco1') | first %}
+                                {% if localizacao_boneco1 %}
+                                    <div class="x" style="left: {{ localizacao_boneco1.x }}px; top: {{ localizacao_boneco1.y }}px;">X</div>
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="boneco" id="boneco2">
                             <img src="{{ url_for('static', filename='imagens/boneco_costas.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
-                                {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
-                                {% endfor %}
+                                {% set localizacao_boneco2 = relatorio['integridade_cutanea']['localizacao'] | selectattr('boneco', 'equalto', 'boneco2') | first %}
+                                {% if localizacao_boneco2 %}
+                                    <div class="x" style="left: {{ localizacao_boneco2.x }}px; top: {{ localizacao_boneco2.y }}px;">X</div>
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="boneco" id="boneco3">
                             <img src="{{ url_for('static', filename='imagens/boneca.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
-                                {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
-                                {% endfor %}
+                                {% set localizacao_boneco3 = relatorio['integridade_cutanea']['localizacao'] | selectattr('boneco', 'equalto', 'boneco3') | first %}
+                                {% if localizacao_boneco3 %}
+                                    <div class="x" style="left: {{ localizacao_boneco3.x }}px; top: {{ localizacao_boneco3.y }}px;">X</div>
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="boneco" id="boneco4">
                             <img src="{{ url_for('static', filename='imagens/boneca_costas.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
-                                {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
-                                {% endfor %}
+                                {% set localizacao_boneco4 = relatorio['integridade_cutanea']['localizacao'] | selectattr('boneco', 'equalto', 'boneco4') | first %}
+                                {% if localizacao_boneco4 %}
+                                    <div class="x" style="left: {{ localizacao_boneco4.x }}px; top: {{ localizacao_boneco4.y }}px;">X</div>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
@@ -145,24 +149,13 @@
                     <h4>Estado Geral:</h4>
                     <div><span class="subtitulo">Consciência:</span> {{ relatorio['estado_geral'].get('consciencia', '') }}</div>
                     <div><span class="subtitulo">Dor:</span> {{ relatorio['estado_geral'].get('dor', '') }}</div>
-                    {% if relatorio['estado_geral'].get('horario_dormir') %}
-                        <div><span class="subtitulo">Horário que foi dormir:</span> {{ relatorio['estado_geral']['horario_dormir'] }}</div>
-                    {% endif %}
-                    {% if relatorio['estado_geral'].get('horario_despertar') %}
-                        <div><span class="subtitulo">Horário que despertou:</span> {{ relatorio['estado_geral']['horario_despertar'] }}</div>
-                    {% endif %}
-                    {% if relatorio['estado_geral'].get('num_despertares') %}
-                        <div><span class="subtitulo">Número de vezes que despertou:</span> {{ relatorio['estado_geral']['num_despertares'] }}</div>
-                    {% endif %}
-                    {% if relatorio['estado_geral'].get('tempo_dormido_dia') %}
-                        <div><span class="subtitulo">Tempo que dormiu durante o dia:</span> {{ relatorio['estado_geral']['tempo_dormido_dia'] }}</div>
-                    {% endif %}
-                    {% if relatorio['estado_geral'].get('falta_de_ar') %}
-                        <div><span class="subtitulo">Queixa de falta de ar:</span> {{ relatorio['estado_geral']['falta_de_ar'] }}</div>
-                    {% endif %}
-                    {% if relatorio['estado_geral'].get('roncos') %}
-                        <div><span class="subtitulo">Apresenta roncos:</span> {{ relatorio['estado_geral']['roncos'] }}</div>
-                    {% endif %}
+                    <div><span class="subtitulo">Horário que foi dormir:</span> {{ relatorio['estado_geral']['sono']['horario_dormir'] }}</div>
+                    <div><span class="subtitulo">Horário que despertou:</span> {{ relatorio['estado_geral']['sono']['horario_despertar'] }}</div>
+                    <div><span class="subtitulo">Número de vezes que despertou:</span> {{ relatorio['estado_geral']['sono']['n_vezes_despertou'] }}</div>
+                    <div><span class="subtitulo">Tempo que dormiu durante o dia:</span> {{ relatorio['estado_geral']['sono']['tempo_dia'] }}</div>
+                    <div><span class="subtitulo">Queixa de falta de ar:</span> {{ relatorio['estado_geral']['sono']['queixa_falta_ar'] }}</div>
+                    <div><span class="subtitulo">Apresenta roncos:</span> {{ relatorio['estado_geral']['sono']['roncos'] }}</div>
+
 
                     <!-- Seção de Higiene -->
                     <h4>Higiene:</h4>
