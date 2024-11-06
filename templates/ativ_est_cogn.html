@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistematização dos Cuidados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3e6f3;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #73add7;
+            padding: 10px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-left img {
+            margin-right: 10px;
+        }
+        .section {
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border: 1px solid #73add7;
+            border-radius: 5px;
+        }
+        .section h2 {
+            color: #337ab7;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #e7f2fa;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-left">
+        <!-- <img src="calendar_icon.png" alt="Calendar Icon" width="24" height="24"> -->
+        <div>
+            <h1>Sistematização dos Cuidados</h1>
+            <h3>Registro Diário</h3>
+        </div>
+    </div>
+    <div>
+        <label for="user-select">Nome do utilizador:</label>
+        <select id="user-select">
+            <option>Funcionário 1</option>
+            <option>Funcionário 2</option>
+            <option>Funcionário 3</option>
+        </select>
+    </div>
+    <div>
+        <label for="date">Data:</label>
+        <input type="date" id="date" value="2024-11-06">
+    </div>
+    <div>
+        <label for="time">Horário:</label>
+        <select id="time">
+            <!-- Horários de 15 em 15 minutos -->
+            <option>00:00</option>
+            <option>00:15</option>
+            <option>00:30</option>
+            <option>00:45</option>
+            <!-- Continue com outros horários aqui -->
+            <option>23:45</option>
+        </select>
+    </div>
+</div>
+<div class="section">
+    <h2>Registro do Humor:</h2>
+    <table>
+        <tr>
+            <td>1 - Jardinagem</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>2 - Caça-palavras</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>3 - Jenga</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>4 - Jogo da Memória</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>5 - Roda de Conversa</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>6 - Leitura</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>7 - Cine Jolie</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>8 - Atividade Digital</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>9 - Videogame</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>10 - Culinária</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>11 - Outros</td>
+            <td>
+                <select>
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
