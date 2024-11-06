@@ -171,8 +171,6 @@ def adicionar_relatorio(cpf):
           frequencia_respiratoria = request.form.get("frequencia_respiratoria")
           consciencia = request.form.get("consciencia")
           dor = request.form.get("dor")
-          mobilidade = request.form.get("mobilidade")
-          higiene = request.form.get("higiene")
           observacoes = request.form.get("observacoes")
 
           # Captura os dados da integridade cutânea
@@ -180,16 +178,17 @@ def adicionar_relatorio(cpf):
           tipo_lesao = request.form.get("tipo_lesao")
           troca_curativo = request.form.get("troca_curativo")
 
-          # Captura os novos campos
-          prescricao_curativo = request.form.get("prescricao_curativo")  # Novo campo
-          observacoes_curativo = request.form.get("observacoes")  # Observações já existente
+          # Captura os novos campos de higiene
+          banho = request.form.get("banho_aspersao")  # Captura o tipo de banho
+          cooperacao = request.form.get("cooperacao")  # Captura a cooperação do hóspede
+          quantidade_banhos = request.form.get("quantidade_banhos")  # Captura a quantidade de banhos
 
           # Captura a localização do "X"
           localizacao = request.form.get("localizacao")
           if localizacao:
-            localizacao = json.loads(localizacao)
+              localizacao = json.loads(localizacao)
           else:
-            localizacao = []  
+              localizacao = []  
 
           # Informações de sono
           horario_dormir = request.form.get("horario_dormir")
@@ -198,6 +197,17 @@ def adicionar_relatorio(cpf):
           tempo_dormido_dia = request.form.get("tempo_dia")  # Corrigido para corresponder ao nome do campo
           falta_de_ar = request.form.get("queixa_falta_ar")  # Corrigido para corresponder ao nome do campo
           roncos = request.form.get("roncos")
+
+          # Captura os dados do humor
+          humor_lucido = request.form.get('humor_lucido')
+          humor_letargico = request.form.get('humor_letargico')
+          humor_obnubilado = request.form.get('humor_obnubilado')
+          humor_hiperalerta = request.form.get('humor_hiperalerta')
+          humor_cooperativo = request.form.get('humor_cooperativo')
+          humor_comunicativo = request.form.get('humor_comunicativo')
+          humor_agressivo = request.form.get('humor_agressivo')
+          humor_choroso = request.form.get('humor_choroso')
+          registro_lapso_memoria = request.form.get('registro_lapso_memoria')
 
           # Alimentação e hidratação
           tipo_alimentacao = request.form.get("tipo_alimentacao")
@@ -249,6 +259,43 @@ def adicionar_relatorio(cpf):
                       "situacao": situacao
                   })
 
+          # Captura as informações das atividades
+          atividades = {
+              "jardinagem": request.form.get("jardinagem"),
+              "caca_palavras": request.form.get("caca_palavras"),
+              "jenga": request.form.get("jenga"),
+              "jogo_memoria": request.form.get("jogo_memoria"),
+              "roda_conversa": request.form.get("roda_conversa"),
+              "leitura": request.form.get("leitura"),
+              "cine_jolie": request.form.get("cine_jolie"),
+              "atividade_digital": request.form.get("atividade_digital"),
+              "video_game": request.form.get("video_game"),
+              "culinaria": request.form.get("culinaria"),
+              "outros": request.form.get("outros"),
+          }
+
+          # Captura os dados de higiene oral
+          higiene_oral = {
+              "ao_acordar": request.form.get("Ao_acordar"),
+              "apos_almoço": request.form.get("Apos_almoço"),
+              "antes_dormir": request.form.get("Antes_dormir")
+          }
+
+          # Captura os dados das eliminações intestinais
+          eliminacoes_intestinais = {
+              "aspecto": request.form.get("Aspecto"),
+              "frequencia": request.form.get("Frequência")
+          }
+
+          # Captura os dados das eliminações vesicais
+          eliminacoes_vesicais = {
+              "procedimento": request.form.get("Procedimento"),
+              "aspecto": request.form.get("Aspecto_vesical"),
+              "frequencia": request.form.get("Frequência_vesical"),
+              "odor": request.form.get("Odor"),
+              "quantidade_24h": request.form.get("quantidade_24h")
+          }
+
           # Adiciona o relatório ao paciente
           relatorio = {
               "data": data,
@@ -277,9 +324,15 @@ def adicionar_relatorio(cpf):
                   "pele_prejudicada": pele_prejudicada,
                   "tipo_lesao": tipo_lesao,
                   "troca_curativo": troca_curativo,
-                  "prescricao_curativo": prescricao_curativo,
-                  "observacoes_curativo": observacoes_curativo,
+                  "prescricao_curativo": request.form.get("prescricao_curativo"),  # Novo campo
+                  "observacoes_curativo": request.form.get("observacoes"),  # Observações já existente
                   "localizacao": localizacao  # Armazena a localização do "X"
+              },
+              "mobilidade_higiene": {
+                  "banho": banho,  # Adiciona o tipo de banho
+                  "cooperacao": cooperacao,  # Adiciona a cooperação do hóspede
+                  "quantidade_banhos": quantidade_banhos,  # Adiciona a quantidade de banhos
+                  "atividades": atividades  # Adiciona as atividades aqui
               },
               "alimentacao_hidratacao": {
                   "tipo_alimentacao": tipo_alimentacao,
@@ -319,18 +372,29 @@ def adicionar_relatorio(cpf):
                       "observacoes": request.form.get("hidratacao_obs", "")
                   }
               },
-              "mobilidade_higiene": {
-                  "mobilidade": mobilidade,
-                  "higiene": higiene
-              },
+              "higiene_oral": higiene_oral,  # Adiciona os dados de higiene oral
+              "eliminacoes_intestinais": eliminacoes_intestinais,  # Adiciona os dados de eliminações intestinais
+              "eliminacoes_vesicais": eliminacoes_vesicais,  # Adiciona os dados de eliminações vesicais
               "medicamentos": medicamentos,
               "observacoes": observacoes,
+              "humor": {
+                  "lucido": humor_lucido,
+                  "letargico": humor_letargico,
+                  "obnubilado": humor_obnubilado,
+                  "hiperalerta": humor_hiperalerta,
+                  "cooperativo": humor_cooperativo,
+                  "comunicativo": humor_comunicativo,
+                  "agressivo": humor_agressivo,
+                  "choroso": humor_choroso,
+              },
+              "lapsos_memoria": {
+                  "registro": registro_lapso_memoria
+              },
               "cadastrado_por": session.get('user', 'Desconhecido')
           }
 
           # Adiciona o relatório à lista de relatórios do paciente
           paciente["relatorios"].append(relatorio)
-         # print("localização do X:", localizacao)
 
           return redirect(url_for("ver_relatorios", cpf=cpf))
       except Exception as e:

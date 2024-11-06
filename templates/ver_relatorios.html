@@ -50,17 +50,13 @@
             border: 1px solid #ccc;
             overflow: hidden; /* Para garantir que nada saia do contêiner */
         }
-
         .boneco img {
             width: 100%; /* Faz a imagem ocupar toda a largura do contêiner */
             height: auto; /* Mantém a proporção da imagem */
             display: block; /* Remove espaços em branco abaixo da imagem */
         }
-
         .x {
             position: absolute;
-            top: 10px; /* Ajuste a posição do "X" conforme necessário */
-            left: 10px; /* Ajuste a posição do "X" conforme necessário */
             background-color: red; /* Cor de fundo do "X" */
             color: white; /* Cor do texto do "X" */
             text-align: center;
@@ -116,7 +112,7 @@
                             <img src="{{ url_for('static', filename='imagens/boneco.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
                                 {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px; position: absolute;">X</div>
+                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
                                 {% endfor %}
                             {% endif %}
                         </div>
@@ -124,7 +120,7 @@
                             <img src="{{ url_for('static', filename='imagens/boneco_costas.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
                                 {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px; position: absolute;">X</div>
+                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
                                 {% endfor %}
                             {% endif %}
                         </div>
@@ -132,7 +128,7 @@
                             <img src="{{ url_for('static', filename='imagens/boneca.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
                                 {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px; position: absolute;">X</div>
+                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
                                 {% endfor %}
                             {% endif %}
                         </div>
@@ -140,11 +136,10 @@
                             <img src="{{ url_for('static', filename='imagens/boneca_costas.png') }}" alt="Boneco">
                             {% if relatorio['integridade_cutanea']['localizacao'] %}
                                 {% for local in relatorio['integridade_cutanea']['localizacao'] %}
-                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px; position: absolute;">X</div>
+                                    <div class="x" style="left: {{ local.x }}px; top: {{ local.y }}px;">X</div>
                                 {% endfor %}
                             {% endif %}
                         </div>
-                        <!-- Adicione outros bonecos conforme necessário -->
                     </div>
 
                     <h4>Estado Geral:</h4>
@@ -169,9 +164,43 @@
                         <div><span class="subtitulo">Apresenta roncos:</span> {{ relatorio['estado_geral']['roncos'] }}</div>
                     {% endif %}
 
-                    <h4>Mobilidade e Higiene:</h4>
-                    <div><span class="subtitulo">Mobilidade:</span> {{ relatorio['mobilidade_higiene']['mobilidade'] }}</div>
-                    <div><span class="subtitulo">Higiene:</span> {{ relatorio['mobilidade_higiene']['higiene'] }}</div>
+                    <!-- Seção de Higiene -->
+                    <h4>Higiene:</h4>
+                    <div><span class="subtitulo">Banho:</span> {{ relatorio['mobilidade_higiene']['banho'] }}</div>
+                    <div><span class="subtitulo">Cooperação do Hóspede:</span> {{ relatorio['mobilidade_higiene']['cooperacao'] }}</div>
+                    <div><span class="subtitulo">Quantidade de Banhos:</span> {{ relatorio['mobilidade_higiene']['quantidade_banhos'] }}</div>
+                    <div><span class="subtitulo">Troca de Fralda/Absorvente:</span> {{ relatorio['mobilidade_higiene'].get('troca_frauda', 'Não especificado') }}</div>
+
+                    <h4>Higiene Oral:</h4>
+                    <div><span class="subtitulo">Ao Acordar:</span> {{ relatorio['higiene_oral']['ao_acordar'] }}</div>
+                    <div><span class="subtitulo">Após Almoço:</span> {{ relatorio['higiene_oral']['apos_almoço'] }}</div>
+                    <div><span class="subtitulo">Antes de Dormir:</span> {{ relatorio['higiene_oral']['antes_dormir'] }}</div>
+
+                    <h4>Eliminações Intestinais:</h4>
+                    <div><span class="subtitulo">Código A (Aspecto):</span> {{ relatorio['eliminacoes_intestinais']['aspecto'] }}</div>
+                    <div><span class="subtitulo">Código B (Frequência):</span> {{ relatorio['eliminacoes_intestinais']['frequencia'] }}</div>
+
+                    <h4>Eliminações Vesicais:</h4>
+                    <div><span class="subtitulo">Procedimento:</span> {{ relatorio['eliminacoes_vesicais']['procedimento'] }}</div>
+                    <div><span class="subtitulo">Código A (Aspecto):</span> {{ relatorio['eliminacoes_vesicais']['aspecto'] }}</div>
+                    <div><span class="subtitulo">Código B (Frequência):</span> {{ relatorio['eliminacoes_vesicais']['frequencia'] }}</div>
+                    <div><span class="subtitulo">Código C (Odor):</span> {{ relatorio['eliminacoes_vesicais']['odor'] }}</div>
+                    <div><span class="subtitulo">Quantidade 24 horas - CVC ou CVA (ml):</span> {{ relatorio['eliminacoes_vesicais']['quantidade_24h'] }}</div>
+
+                    <h4>Atividades:</h4>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li>Jardinagem: {{ relatorio['mobilidade_higiene']['atividades']['jardinagem'] }}</li>
+                        <li>Caça Palavras: {{ relatorio['mobilidade_higiene']['atividades']['caca_palavras'] }}</li>
+                        <li>Jenga: {{ relatorio['mobilidade_higiene']['atividades']['jenga'] }}</li>
+                        <li>Jogo da Memória: {{ relatorio['mobilidade_higiene']['atividades']['jogo_memoria'] }}</li>
+                        <li>Roda de Conversa: {{ relatorio['mobilidade_higiene']['atividades']['roda_conversa'] }}</li>
+                        <li>Leitura: {{ relatorio['mobilidade_higiene']['atividades']['leitura'] }}</li>
+                        <li>Cine Jolie: {{ relatorio['mobilidade_higiene']['atividades']['cine_jolie'] }}</li>
+                        <li>Atividade Digital: {{ relatorio['mobilidade_higiene']['atividades']['atividade_digital'] }}</li>
+                        <li>Video Game: {{ relatorio['mobilidade_higiene']['atividades']['video_game'] }}</li>
+                        <li>Culinária: {{ relatorio['mobilidade_higiene']['atividades']['culinaria'] }}</li>
+                        <li>Outros: {{ relatorio['mobilidade_higiene']['atividades']['outros'] }}</li>
+                    </ul>
 
                     <h4>Alimentação e Hidratação:</h4>
                     <div><span class="subtitulo">Tipo de Alimentação:</span> {{ relatorio['alimentacao_hidratacao']['tipo_alimentacao'] }}</div>
@@ -251,6 +280,19 @@
                     {% else %}
                         <p>Nenhum medicamento registrado.</p>
                     {% endif %}
+
+                    <h4>Registro do Humor:</h4>
+                    <div><span class="subtitulo">Lúcido e Orientado:</span> {{ relatorio['humor']['lucido'] }}</div>
+                    <div><span class="subtitulo">Letárgico:</span> {{ relatorio['humor']['letargico'] }}</div>
+                    <div><span class="subtitulo">Obnubilado:</span> {{ relatorio['humor']['obnubilado'] }}</div>
+                    <div><span class="subtitulo">Hiperalerta/Agitado:</span> {{ relatorio['humor']['hiperalerta'] }}</div>
+                    <div><span class="subtitulo">Cooperativo:</span> {{ relatorio['humor']['cooperativo'] }}</div>
+                    <div><span class="subtitulo">Comunicativo:</span> {{ relatorio['humor']['comunicativo'] }}</div>
+                    <div><span class="subtitulo">Agressivo:</span> {{ relatorio['humor']['agressivo'] }}</div>
+                    <div><span class="subtitulo">Choroso:</span> {{ relatorio['humor']['choroso'] }}</div>
+
+                    <h4>Registro de Lapsos de Memória:</h4>
+                    <div><span class="subtitulo">Registro:</span> {{ relatorio['lapsos_memoria']['registro'] }}</div>
                 </div>
             {% endfor %}
         {% else %}
@@ -259,45 +301,5 @@
     </div>
 
     <a href="/home">Voltar ao início</a>
-
-    <!--<script>
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
-        }
-
-        document.querySelectorAll('.boneco').forEach(boneco => {
-            boneco.addEventListener('dragover', (ev) => {
-                ev.preventDefault();
-            });
-
-            boneco.addEventListener('drop', (ev) => {
-                ev.preventDefault();
-                const data = ev.dataTransfer.getData("text");
-                const xElement = document.getElementById(data);
-                const rect = boneco.getBoundingClientRect();
-                const x = ev.clientX - rect.left - (xElement.offsetWidth / 2);
-                const y = ev.clientY - rect.top - (xElement.offsetHeight / 2);
-                xElement.style.left = `${x}px`;
-                xElement.style.top = `${y}px`;
-                xElement.style.position = 'absolute';
-                boneco.appendChild(xElement);
-            });
-        });
-
-        document.getElementById('registrar').addEventListener('click', () => {
-            const localizacao = [];
-            document.querySelectorAll('.x').forEach(x => {
-                const boneco = x.parentElement.id;
-                const rect = x.getBoundingClientRect();
-                // Calcula a posição relativa ao boneco
-                const bonecoRect = document.getElementById(boneco).getBoundingClientRect();
-                const xPos = rect.left - bonecoRect.left; // Posição X relativa ao boneco
-                const yPos = rect.top - bonecoRect.top;   // Posição Y relativa ao boneco
-                localizacao.push({ boneco: boneco, x: xPos, y: yPos });
-            });
-            document.getElementById('localizacao').value = JSON.stringify(localizacao);
-            console.log(localizacao); // Para ver as coordenadas no console
-        });
-    </script>-->
 </body>
 </html>

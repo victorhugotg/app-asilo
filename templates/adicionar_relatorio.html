@@ -140,7 +140,7 @@
     <textarea id="observacoes" name="observacoes" rows="4" cols="50" placeholder="Digite suas observações aqui..."></textarea><br><br>
 
     <!-- Estado Geral -->
-    <h3>2. Estado Geral:</h3>
+    <h3>2. Estado Geral e Higiene:</h3>
     <label for="consciencia">Consciência:</label>
     <input type="text" id="consciencia" name="consciencia" required><br><br>
 
@@ -155,16 +155,134 @@
     <input type="time" id="horario_despertar" name="horario_despertar"><br><br>
 
     <label for="n_vezes_despertou">Número de vezes que despertou durante a noite:</label>
-    <input type="number" id="n_vezes_despertou" name="n_vezes_despertou" min="0"><br><br>
+    <input type="text" id="n_vezes_despertou" name="n_vezes_despertou" placeholder="(minutos)"><br><br>
 
     <label for="tempo_dia">Tempo que dormiu durante o dia:</label>
     <input type="text" id="tempo_dia" name="tempo_dia" placeholder="Ex: 2 horas e 30 minutos"><br><br>
 
     <label for="queixa_falta_ar">Queixa de falta de ar:</label>
-    <input type="text" id="queixa_falta_ar" name="queixa_falta_ar" placeholder="Sim ou Não"><br><br>
+    <select id="queixa_falta_ar" name="queixa_falta_ar">
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
 
     <label for="roncos">Apresenta roncos:</label>
-    <input type="text" id="roncos" name="roncos" placeholder="Sim ou Não"><br><br>
+    <select id="roncos" name="roncos">
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
+
+    <!-- Código para Higiene -->
+    <h3> Higiene:</h3>
+    <label for="banho_aspersao">Banho: </label>
+    <select id="banho_aspersao" name="banho_aspersao">
+        <option value="Banho sem auxílio">Banho sem auxílio</option>
+        <option value="Banho de aspersão com Auxílio/Supervisão">Banho de aspersão com Auxílio/Supervisão</option>
+        <option value="Banho de Aspersão em Cadeira Higiénica">Banho de Aspersão em Cadeira Higiénica</option>
+        <option value="Banho no Leito">Banho no Leito</option>
+    </select><br><br>
+
+    <label for="cooperacao">Cooperação do Hóspede durante o Banho:</label>
+    <select id="cooperacao" name="cooperacao">
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
+
+    <label for="quantidade_banhos">Quantidades de Banhos:</label>
+    <select id="quantidade_banhos" name="quantidade_banhos">
+        <option value="0 Banho">0 Banho</option>
+        <option value="1 Banho">1 Banho</option>
+        <option value="2 Banhos">2 Banhos</option>
+        <option value="3 Banhos">3 Banhos</option>
+        <option value="4 Banhos">4 Banhos</option>
+    </select><br><br>
+
+    <label for="troca_frauda">Troca de frauda/absorvente</label>
+    <select id="troca_frauda" name="troca_frauda">
+        <option value="Não usa/trocou">Não usa/trocou</option>
+        <option value="1 troca">1 troca</option>
+        <option value="2 trocas">2 trocas</option>
+        <option value="3 trocas">3 trocas</option>
+        <option value="4 trocas">4 trocas</option>
+        <option value="5 trocas">5 trocas</option>
+        <option value="6 trocas">6 trocas</option>
+    </select><br><br>
+
+    <h3>Higiene Oral</h3>
+
+    <label for="Ao_acordar">Ao acordar</label>
+    <select id="Ao_acordar" name="Ao_acordar">
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
+    
+    <label for="Apos_almoço">Após almoço</label>
+    <select id="Apos_almoço" name="Apos_almoço">
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
+
+    <label for="Antes_dormir">Antes de dormir</label>
+    <select id="Antes_dormir" name="Antes_dormir">
+        <option value="Não">Não</option>
+        <option value="Sim">Sim</option>
+    </select><br><br>
+    
+    <h3>Eliminações Intestinais</h3>
+
+    <label for="Aspecto">Código A (Aspecto):</label>
+    <select id="Aspecto" name="Aspecto">
+        <option value="Moldada">Moldada</option>
+        <option value="Pastosa">Pastosa</option>
+        <option value="Semi-Pastosa">Semi-Pastosa</option>
+        <option value="Líquida">Líquida</option>
+    </select><br><br>
+
+    <label for="Frequência">Código B (Frequência):</label>
+    <select id="Frequência" name="Frequência">
+        <option value="1 vez">1 vez</option>
+        <option value="2 vezes">2 vezes</option>
+        <option value="3 vezes">3 vezes</option>
+        <option value="4 vezes">4 vezes</option>
+    </select><br><br>
+
+    <h3>Eliminações Vesicais</h3>
+
+    <label for="Procedimento">Procedimento:</label>
+    <select id="Procedimento" name="Procedimento">
+        <option value="Frauda">Frauda</option>
+        <option value="Sanitário">Sanitário</option>
+        <option value="CVD - Caráter Vesical de Demora">CVD - Caráter Vesical de Demora</option>
+        <option value="CVA - Caráter Vesical de Alívio">CVA - Caráter Vesical de Alívio</option>
+    </select><br><br>
+
+    <label for="Aspecto_vesical">Código A (Aspecto):</label>
+    <select id="Aspecto_vesical" name="Aspecto_vesical">
+        <option value="Amarelo">Amarelo</option>
+        <option value="Amarelo Claro">Amarelo Claro</option>
+        <option value="Amarelo Escuro">Amarelo Escuro</option>
+        <option value="Avermelhada">Avermelhada</option>
+        <option value="Marrom">Marrom</option>
+        <option value="Esverdeada">Esverdeada</option>
+    </select><br><br>
+
+    <label for="Frequência_vesical">Código B (Frequência):</label>
+    <select id="Frequência_vesical" name="Frequência_vesical">
+        <option value="1 vez">1 vez</option>
+        <option value="2 vezes">2 vezes</option>
+        <option value="3 a 4 vezes">3 a 4 vezes</option>
+        <option value="5 ou mais vezes">5 ou mais vezes</option>
+    </select><br><br>
+
+    <label for="Odor">Código C (Odor):</label>
+    <select id="Odor" name="Odor">
+        <option value="Sem cheiro">Sem cheiro</option>
+        <option value="Odor Forte">Odor Forte</option>
+        <option value="Odor Cetônico">Odor Cetônico</option>
+    </select><br><br>
+
+    <label for="quantidade_24h"> Quantidade 24 horas - CVC ou CVA (ml):</label>
+        <input type="text" id="quantidade_24h" name="quantidade_24h" required><br><br>
 
     <!-- Registro de Refeições -->
     <h3>3. Alimentação:</h3>
@@ -267,13 +385,74 @@
         <h4>1,8 Litros p/ dia</h4><br> 
     </div>
 
-    <!-- Mobilidade e Higiene -->
-    <h3>4. Mobilidade e Higiene:</h3>
-    <label for="mobilidade">Mobilidade:</label>
-    <input type="text" id="mobilidade" name="mobilidade" required><br><br>
+<!-- Nova Seção de Atividades -->
+<h3>Atividades:</h3>
+<label for="jardinagem"> Jardinagem:</label>
+<select id="jardinagem" name="jardinagem">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
 
-    <label for="higiene">Higiene (fraldas trocadas, etc.):</label>
-    <input type="text" id="higiene" name="higiene" required><br><br>
+<label for="caca_palavras">Caça Palavras:</label>
+<select id="caca_palavras" name="caca_palavras">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="jenga"> Jenga:</label>
+<select id="jenga" name="jenga">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="jogo_memoria"> Jogo da Memória:</label>
+<select id="jogo_memoria" name="jogo_memoria">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="roda_conversa"> Roda de Conversa:</label>
+<select id="roda_conversa" name="roda_conversa">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="leitura"> Leitura:</label>
+<select id="leitura" name="leitura">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="cine_jolie"> Cine Jolie:</label>
+<select id="cine_jolie" name="cine_jolie">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="atividade_digital"> Atividade Digital:</label>
+<select id="atividade_digital" name="atividade_digital">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="video_game"> Video Game:</label>
+<select id="video_game" name="video_game">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="culinaria"> Culinária:</label>
+<select id="culinaria" name="culinaria">
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+</select><br><br>
+
+<label for="outros"> Outros:</label>
+<select id="outros" name="outros">
+    <option value="">Selecione...</option>
+    <option value="Sim">Sim</option>
+    <option value="Não">Não</option>
+</select><br><br>
 
     <!-- Medicamentos -->
     <h3>5. Medicamentos:</h3>
@@ -379,8 +558,94 @@
     <br><br>
 
     <!-- Observações Gerais -->
-    <h3>6. Observações:</h3>
-    <textarea id="observacoes" name="observacoes" rows="4"></textarea><br><br>
+<h3>6. Observações:</h3>
+<!--<textarea id="observacoes" name="observacoes" rows="4"></textarea><br><br>-->
+
+<!-- Registro do Humor -->
+<h4>Registro do Humor:</h4>
+<table>
+    <tr>
+        <td>Lúcido e Orientado</td>
+        <td>
+            <select name="humor_lucido">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Letárgico</td>
+        <td>
+            <select name="humor_letargico">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Obnubilado</td>
+        <td>
+            <select name="humor_obnubilado">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Hiperalerta/Agitado</td>
+        <td>
+            <select name="humor_hiperalerta">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Cooperativo</td>
+        <td>
+            <select name="humor_cooperativo">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Comunicativo</td>
+        <td>
+            <select name="humor_comunicativo">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Agressivo</td>
+        <td>
+            <select name="humor_agressivo">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Choroso</td>
+        <td>
+            <select name="humor_choroso">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
+        </td>
+    </tr>
+</table>
+
+<!-- Registro do Lapsos de Memória -->
+<h4>Registro do Lapsos de Memória:</h4>
+<select id="registro_lapso_memoria" name="registro_lapso_memoria">
+    <option value="Nenhum">Nenhum</option>
+    <option value="Imediata (últimos 15 a 20 segundos)">Imediata (últimos 15 a 20 segundos)</option>
+    <option value="Recente (últimos 5 a 30 minutos)">Recente (últimos 5 a 30 minutos)</option>
+    <option value="Remota (últimas horas)">Remota (últimas horas)</option>
+</select><br><br>
 
     <input type="hidden" id="localizacao" name="localizacao">
 
